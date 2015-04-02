@@ -1,0 +1,236 @@
+/* HELPERS */
+#helper {
+    position: absolute;    left: 0;    top: 0;    width: 50%;    height: 50%;    border-right: 1px solid rebeccapurple;    border-bottom: 1px solid rebeccapurple;    z-index: 1000;
+    display: none;
+}
+
+
+
+html,body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+body {
+    background: hsl(350, 100%, 62%);
+    transition: background-color 0.3s ease;
+}
+
+/* INTRO */
+div#intro {
+    perspective: 1200px;
+    perspective-origin: 50% 50%;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+#loading-svg{
+    position: absolute;
+    z-index: 2;
+    top: calc(50vh - 135px);
+    left: calc(50vw - 960px);
+}
+
+#loading-circle{
+  stroke-dasharray: 440px, 427px;
+  stroke-dashoffset: -440px;
+  stroke-width: 10px;
+  fill: transparent;
+  stroke: hsl(0, 100%, 100%);
+}
+
+#loading-circle-svg{
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.intro-ring{
+    fill:none;
+    stroke: #343434;
+    stroke-width: 4px;
+    stroke-linejoin:bevel;
+    stroke-miterlimit:10;
+}
+
+path.intro-ring:nth-child(2) {
+    stroke: rgb(221, 221, 221);
+}
+
+
+.loading-text{
+    /* display: none; */
+    position: absolute;
+    left: 0;
+    top: calc(50vh - 200px);
+    width: 100%;
+    text-align: center;
+}
+
+/*LOADING */
+
+#loading-spinner-container{
+    width: 252px;
+    height: 252px;
+    /* background: rgb(255, 0, 0); */
+    position: absolute;
+    top: calc(50vh - 126px);
+    left: calc(50vw - 126px);
+    overflow: hidden;
+    border-radius: 660px;
+    padding: 26px;
+    display: block;
+    opacity: 0;
+    transition: opacity 0.1s, transform 0.6s ease-out;
+    transform: rotateX(90deg);
+    backface-visibility: hidden;    
+}
+
+.circle{
+  position: absolute;
+
+  width: 150px;
+
+  height: 150px;
+  top: 24px;
+  left: 24px;
+
+  border: 10px solid #FCFCFC;
+
+  border-radius: 50%;
+}
+
+.middle-wrapper {
+    width: 58px;    height: 58px;
+    position: relative;
+    top: 71px;    
+    left: 71px;
+    /*    background: yellow;
+    border-left: 10px solid blue;*/
+    animation: rotateCW 4.8s 0s steps(6) infinite;
+}
+
+.middle{
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  width: 58px;
+  height: 58px;
+  background: #FCFCFC;
+  -webkit-animation: pulse 1.6s 0.0s infinite ease-out;
+}
+
+div.autocenter {
+    margin: auto;  
+    width: 200px;  
+    height: 200px;    
+    margin-top: 0;
+    /* background: rgb(255, 0, 0); */
+    /* -webkit-filter: blur(5px) contrast(15); */
+    /* border-radius: 50%; */
+    position: relative;
+    -webkit-filter: url("#goo");    
+    filter: url("index.html#goo");
+}
+div.particle-wrapper {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 100px;
+    left: 100px;
+    transform-origin: 0 0;
+}
+.particle {
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    transform: translateX(0px);
+    animation-duration: 2.4s;
+    animation-iteration-count: infinite;
+    border-radius: 50%;
+    background: hsl(0, 0%, 99%);
+    animation-direction: normal;
+    /* -webkit-animation: none !important; */
+}
+
+.particle.even{
+  animation-name: even;
+}
+
+* {
+    /* -webkit-animation: none !important; */
+}
+
+.particle-wrapper:nth-child(3n)>.particle {
+    animation-delay: 0s;
+}
+
+.particle-wrapper:nth-child(3n+1)>.particle {
+    animation-delay: 0.8s;
+}
+
+.particle-wrapper:nth-child(3n+2)>.particle {
+    animation-delay: 1.6s;
+}
+
+#goo-svg{
+  display:none;
+}
+
+
+@keyframes even{
+    0%{ transform: translateX(0px);}
+    10%{ transform: translateX(0px);}
+    30%{transform: translateX(68px);animation-timing-function:cubic-bezier(0.5,0.05,0.9,0.05);}
+    35%{transform: translateX(68px);animation-timing-function:cubic-bezier(0,9.0.05,0.5,.9);}
+    100%{transform: translateX(0px);}
+}
+
+@-webkit-keyframes pulse{
+
+    25%{transform: scale(1)}
+    30%{transform: scale(1.45, 0.70)}
+    50%{transform: scale(1)}
+    
+    /*80%{-webkit-transform: scale(1)}
+    85%{-webkit-transform: scale(1.2, 0.8)}
+    100%{-webkit-transform: scale(1)}*/
+}
+
+@-webkit-keyframes rotateCW {
+
+    from {transform:  rotate(0deg)}
+    to {transform: rotate(360deg)}
+}
+
+.deg-60 {
+    transform: rotate(60deg);
+}
+
+.deg-120 {
+    transform: rotate(120deg);
+}
+
+.deg-180 {
+    transform: rotate(180deg);
+}
+
+.deg-240 {
+    transform: rotate(240deg);
+}
+.deg-300 {
+    transform: rotate(300deg);
+}
+

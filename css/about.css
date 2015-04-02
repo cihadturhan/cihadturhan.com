@@ -1,0 +1,75 @@
+svg#love-hate-icons {
+    margin: 0px auto;
+}
+
+#svg-container {
+    position: absolute;
+    left: 0;    
+    top: 50px;
+    width: 100%;
+}
+
+svg#love-hate-chart {
+    position: relative;
+    z-index: 1;
+}
+
+#love-hate-chart text.love-text.title{
+    font-size: 14pt;    
+    fill: #00C263;
+}
+
+#love-hate-chart text.hate-text.title {
+    font-size: 14pt;    
+    fill: rgb(225, 22, 75);
+}
+
+svg#love-hate-chart, svg#love-hate-icons{
+    display: block;
+    border: none;
+    margin: 0px auto;
+}
+
+#svg-like-hate>g{
+   opacity: 0.1;
+   visibility: hidden;
+}
+
+#love-hate-chart rect.love-item {
+    fill: #10D173;
+}
+
+#love-hate-chart rect.hate-item {
+    fill: hsl(350, 100%, 62%);
+}
+
+#love-hate-chart rect.hate-item.hate-parent {
+    fill: transparent;
+    stroke: hsl(350, 100%, 62%);
+    stroke-width: 2;
+}
+
+#love-hate-chart rect.love-item.love-parent {
+    fill: transparent;
+    stroke: hsl(100, 100%, 40%);
+    stroke-width: 2;
+}
+
+#love-hate-chart line.vertical-line {
+    stroke: rgb(129, 145, 157);
+}
+
+#love-hate-chart text.hate-text {
+    fill: hsl(350, 80%, 62%);
+}
+
+#love-hate-chart text {
+    font-family: Calibri,"Myriad Pro", "Open Sans", "Fira Sans", sans-serif;
+    font-size: 11pt;
+    fill: #7B7B7B;
+    font-family: RooneySans;
+}
+
+#love-hate-chart text.love-text {
+    fill: #10D173;
+}
