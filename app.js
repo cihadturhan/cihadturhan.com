@@ -51,14 +51,17 @@ var lazyProcess = (function() {
     
     
     var cssList = [
-    'css/fonts.css',
-    'css/main.css',
+    /*'css/fonts.css',
+    'css/icomoon/style.css',*/
+   // 'css/dist/all.min.css',
+    
+    /*'css/main.css',
     'css/skills.css',
     'css/works.css',
     'css/lab.css',
     'css/about.css',
-    'css/contact.css',
-    'css/icomoon/style.css'
+    'css/contact.css',*/
+    
     ];
     
     var jsList = [
@@ -99,10 +102,9 @@ var lazyProcess = (function() {
     'js/lab.js',
     'js/about.js',
     'js/contact.js',
-
     'js/main.js'*/
 
-    'js/all.min.js'
+    'js/dist/all.min.js'
     ];
     
     var imgList = [

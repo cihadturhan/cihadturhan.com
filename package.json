@@ -1,0 +1,25 @@
+{
+  "name": "cihadturhan.com",
+  "lang": "tr-TR",
+  "charset": "UTF-8",
+  "author": "Cihad Turhan",
+  "http_host": {
+    "dev": "/^localhost$/",
+    "dist": "/^cihadturhan$/"
+  },
+  "title": "Portfolio of Cihad Turhan",
+  "homepage": "http://www.cihadturhan.com",
+  "description": "Interactive portfolio of Cihad Turhan which includes WebGL, D3, CSS3 and other visual demos.",
+  "version": "0.9.0",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-jshint": "~0.7.2",
+    "grunt-contrib-uglify": "~0.8.0",
+    "grunt-contrib-cssmin": "~0.4.1",
+    "grunt-contrib-clean": "~0.4.0",
+    "grunt-contrib-less": "~0.11.0",
+    "grunt-contrib-watch": "~0.6.1",
+    "time-grunt": "~0.2.8",
+    "rebuild": "^0.1.2"
+  }
+}

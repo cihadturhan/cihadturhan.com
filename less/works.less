@@ -1,0 +1,112 @@
+#works>.full {
+    perspective: 1000px;
+    -webkit-perspective: 1000px;
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: left center;
+    width: 100%;
+    background: none;
+    position: relative;
+    z-index: 1;
+}
+
+#works>.background {
+    background: none;
+    height: 100vh;
+    width: 100%;
+    left: 0;
+    top: 0;
+    background-repeat: no-repeat;    
+    background-size: contain;    
+    background-position: 80% center;;
+    position: absolute;
+    z-index: 0;
+    background-color: hsl(0,0%,93%);
+}
+
+#works>.full>.card {
+    pointer-events: none;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    padding: 30px;
+    background: white;
+    width: 902px;
+    height: 602px;
+    margin: auto;
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    display: block;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    position: relative;
+    border: 1px solid rgb(105, 158, 255);
+    /* transition: transform 3s cubic-bezier(0, 0.67, 0.19, 1); */
+    position: relative;
+    top: 50vh;
+    top: ~"calc(50vh - 325px)";
+    top: ~"-webkit-calc(50vh - 325px)";
+    left: -200px;
+}
+#works>.full>.card:after {
+    content: " ";
+    position: absolute;
+    width: 100%;
+    height: 10px;
+    border-radius: 50%;
+    left: 0;
+    bottom: -50px;
+    box-shadow: 0 30px 20px rgba(0, 0, 0, 0.3);
+}
+#works>.full>.card .card-content {
+    margin: auto;
+    /* text-align: center; */
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+}
+
+#works>.full>.card>div {
+    position: absolute;
+    backface-visibility: visible;
+    -webkit-backface-visibility: visible;
+}
+
+#works>.full>.card::before {
+  position: absolute;
+  content: 'Loading...';
+  padding-top: 280px;
+  font-size: 30px;
+  font-family: ProximaNova;
+  color: rgb(0, 85, 255);
+  text-align: center;
+  left: 0px;
+  top: 0px;
+  background: white;
+  width: 100%;
+  height: 100%;
+  transform: translateZ(-20px) rotateY(180deg);
+  -webkit-transform: translateZ(-20px) rotateY(180deg);
+  z-index: 1;
+  box-sizing: border-box;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+
+#works .works-nav {
+
+}
+
+p#works-coffee {
+    font-size: 14pt;
+    padding-bottom: 0;
+}
+
+p#works-coffee>span {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+}
