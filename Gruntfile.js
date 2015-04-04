@@ -27,11 +27,11 @@ module.exports = function(grunt) {
             }
         },
         clean: {
-            src: ["js/dist", "css/dist"],
+            src: ['<%= pkg.dirs.css.dist[0] %>', '<%= pkg.dirs.css.dist[0] %>'],
         },
         uglify: {
             options: {
-                sourceMap: true,
+                sourceMap: false,
                 sourceMapRoot: './',
                 report: 'gzip',
                 compress: true,
@@ -42,7 +42,7 @@ module.exports = function(grunt) {
             codegen: {quote_keys: true},
             dist: {
                 files: {
-                    'js/dist/all.min.js': ['js/*.js']
+                    '<%= pkg.dirs.js.dist[0] %>':'<%= pkg.dirs.js.dev %>'
                 }
             }
         },
@@ -55,27 +55,14 @@ module.exports = function(grunt) {
             },
             dist: {
                 files: {
-                    'css/dist/': ['css/*.css']
-                }
-            }
-        },
-        less: {
-            development: {
-                options: {
-                    paths: ["less"],
-                    sourceMap: true,
-                    sourceMapFilename: "css/dist/all.min.css.map",
-                    sourceMapBasepath: ""
-                },
-                files: {
-                    "css/dist/all.min.css": "less/all.less"
+                    '<%= pkg.dirs.css.dist[0] %>': '<%= pkg.dirs.css.dev %>'
                 }
             }
         },
         watch: {
             styles: {
-                files: 'less/*.less',
-                tasks: ['less:development']
+                files: 'css/*.css',
+                tasks: ['cssmin:dist']
             },
             scripts: {
                 files: 'js/*.js',
@@ -94,6 +81,6 @@ module.exports = function(grunt) {
 
     //grunt.registerTask('default', ['shell:echo']);
     grunt.registerTask('default', ['clean','uglify', 'cssmin']);
-    grunt.registerTask('jsmin', ['uglify','watch:scripts']);
-    grunt.registerTask('cssmin', ['less', 'watch:styles']);
+    grunt.registerTask('jsbuild', ['uglify']);
+    grunt.registerTask('cssbuild', ['cssmin']);
 };

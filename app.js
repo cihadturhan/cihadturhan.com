@@ -51,18 +51,9 @@ var lazyProcess = (function() {
     
     
     var cssList = [
-    /*'css/fonts.css',
-    'css/icomoon/style.css',*/
-   // 'css/dist/all.min.css',
-    
-    /*'css/main.css',
-    'css/skills.css',
-    'css/works.css',
-    'css/lab.css',
-    'css/about.css',
-    'css/contact.css',*/
-    
-    ];
+    'css/fonts.css',
+    'css/icomoon/style.css',    
+    ].concat(_cssDirs);
     
     var jsList = [
     'https://cdnjs.cloudflare.com/ajax/libs/sketch.js/1.0.0/sketch.min.js',
@@ -105,7 +96,7 @@ var lazyProcess = (function() {
     'js/main.js'*/
 
     'js/dist/all.min.js'
-    ];
+    ].concat(_jsDirs);
     
     var imgList = [
         'img/love-hate.svg',
@@ -147,18 +138,18 @@ var lazyProcess = (function() {
     });
     
     loader.start();
+
+    var cssCount = 0;
+    LazyLoad.css(cssList, function() {
+        cssProgress = 20*(++cssCount)/cssList.length;
+        //console.log('CSS: ' + cssProgress)
+        updateProgress();
+    });
     
     var jsCount = 0;
     LazyLoad.js(jsList, function() {
         jsProgress = 30*(++jsCount)/jsList.length;
         //console.log('JS: ' + jsProgress)
-        updateProgress();
-    });
-    
-    var cssCount = 0;
-    LazyLoad.css(cssList, function() {
-        cssProgress = 20*(++cssCount)/cssList.length;
-        //console.log('CSS: ' + cssProgress)
         updateProgress();
     });
     

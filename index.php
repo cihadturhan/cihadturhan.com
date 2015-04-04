@@ -1,3 +1,9 @@
+<?php
+require 'config.php';
+$json = load_package_config();
+
+?>
+
 <!DOCTYPE html>
 <html class="no-scroll">
     <head>
@@ -37,7 +43,10 @@
 		<meta itemprop="image" content="http://www.cihadturhan.com/img/site-intro.png">
 
 		<link rel="stylesheet" href="css/intro.css"/>
-		<link rel="stylesheet" href="css/dist/all.min.css"/>
+		<script>
+			var _jsDirs = <?php echo json_encode($json['dirs']['js'][DIR]); ?>;
+			var _cssDirs = <?php echo json_encode($json['dirs']['css'][DIR]); ?>;
+		</script>
 		<script type="text/javascript" src="js/lib/PxLoader.min.js"></script>
 		<script type="text/javascript" src="js/lib/pxloader-images.min.js"></script>
 		<script type="text/javascript" src="js/lib/lazyload.js"></script>
