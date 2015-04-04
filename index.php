@@ -73,7 +73,7 @@ $json = load_package_config();
 			</nav>
     	</header>
     		
-        <div id="intro" class="full-wh">
+        <div id="intro" class="full-wh" >
 			<svg xmlns="http://www.w3.org/2000/svg" id="goo-svg" version="1.1" width="800">
 			  <defs>
 				<filter id="goo">

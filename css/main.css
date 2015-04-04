@@ -37,6 +37,7 @@ body {
 
 div#main {
     padding-top: 0;
+    visibility: visible;
 }
 
 /* HEADER */

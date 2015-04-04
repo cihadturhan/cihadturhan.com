@@ -57,13 +57,13 @@ var lazyProcess = (function() {
     
     var jsList = [
     'https://cdnjs.cloudflare.com/ajax/libs/sketch.js/1.0.0/sketch.min.js',
-    'js/lib/entropy.js',
     'https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js',
 
     'js/lib/URLParser.js',
 
     'https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js',
     'https://cdnjs.cloudflare.com/ajax/libs/three.js/r70/three.min.js',
+    
     'js/lib/ConvexGeometry.js',
     'js/lib/CopyShader.js',
     'js/lib/RGBShiftShader.js',
@@ -85,17 +85,7 @@ var lazyProcess = (function() {
     
     'js/lib/html2canvas.min.js',
     'js/lib/glitch.js',
-    
-    /*'js/intro-code.js',
-    'js/intro-design.js',
-    'js/skills.js',
-    'js/works.js',
-    'js/lab.js',
-    'js/about.js',
-    'js/contact.js',
-    'js/main.js'*/
-
-    'js/dist/all.min.js'
+    'js/lib/scrollspy.js'
     ].concat(_jsDirs);
     
     var imgList = [

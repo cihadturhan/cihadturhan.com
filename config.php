@@ -1,5 +1,5 @@
 <?php
-define('DIR', 'dist'); //dev or dist 
+define('DIR', 'dev'); //dev or dist 
 
 function load_package_config() {
     $path = 'package.json';

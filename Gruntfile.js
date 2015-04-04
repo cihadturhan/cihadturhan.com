@@ -27,7 +27,7 @@ module.exports = function(grunt) {
             }
         },
         clean: {
-            src: ['<%= pkg.dirs.css.dist[0] %>', '<%= pkg.dirs.css.dist[0] %>'],
+            src: ['<%= pkg.dirs.css.dist[0] %>', '<%= pkg.dirs.js.dist[0] %>'],
         },
         uglify: {
             options: {
@@ -77,9 +77,9 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-less');
+    //grunt.registerTask('default', ['shell:echo']);
     grunt.loadNpmTasks('grunt-contrib-watch');
 
-    //grunt.registerTask('default', ['shell:echo']);
     grunt.registerTask('default', ['clean','uglify', 'cssmin']);
     grunt.registerTask('jsbuild', ['uglify']);
     grunt.registerTask('cssbuild', ['cssmin']);

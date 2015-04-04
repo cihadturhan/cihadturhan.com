@@ -33,6 +33,7 @@ div.autocenter {
     position: relative;
     padding-top: 50px;
     background: hsl(0, 0%, 95%);
+    visibility: hidden;
 }
 
 html,body {
@@ -58,6 +59,7 @@ div#intro {
     overflow: hidden;
     position: relative;
     /* background: hsl(350, 100%, 62%); */
+    visibility: visible;
 }
 
 #loading-svg {
@@ -133,7 +135,7 @@ path.intro-ring:nth-child(2) {
 }
 
 .no-scroll{
-    overflow: hidden;
+    /* overflow: hidden; */
     height: 100%;
 }
 

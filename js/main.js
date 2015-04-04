@@ -38,7 +38,20 @@ function initListeners() {
 }
 
 function freeScroll() {
-    
+   
+   $('.full-wh').on('scrollSpy:enter', function() {
+        $(this).css('visibility', 'visible');
+        console.log('enter:', $(this).attr('id'));
+    });
+
+    $('.full-wh').on('scrollSpy:exit', function() {
+        $(this).css('visibility', 'hidden');
+        console.log('exit:', $(this).attr('id'));
+    });
+
+    $('.full-wh').scrollSpy();
+
+
     TweenMax.to($('header'), 1, {y: 0, ease: Power4.easeOut});
     TweenMax.to($('#main .full-wh-footer'), 1, {y: 0, ease: Power4.easeOut});
 
@@ -90,21 +103,16 @@ function freeScroll() {
         if (scrollTop > maxScroll) {
             maxScroll = scrollTop + height;
         }
-    
     });
-    
-    var isMac = navigator.userAgent.indexOf('Macintosh') > -1;
     
     
     $window.on("mousewheel DOMMouseScroll", function(event) {
-        return false; //:(
 
         var delta = event.originalEvent.wheelDelta / 120 || -event.originalEvent.detail / 3;
         var scrollTop = $window.scrollTop();
-        var finalScroll = scrollTop - parseInt(delta * scrollDistance);
         
-        if (scrollTop < $window.height() && delta > 0)
-            return;
+        if (scrollTop <= $window.height() && delta > 0)
+            return false;
         
         clearInterval(timer);
         timer = setTimeout(function() {
@@ -122,7 +130,7 @@ function freeScroll() {
         
         }, 600);
         
-        if (!isMac) {
+        /*if (!isMac) {
             
             event.preventDefault();
             
@@ -137,7 +145,7 @@ function freeScroll() {
         
         } else {
             $(window).scrollTop(scrollTop - delta * scrollDistanceMac)
-        }
+        }*/
     });
 
 }
