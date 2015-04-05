@@ -85,7 +85,8 @@ var lazyProcess = (function() {
     
     'js/lib/html2canvas.min.js',
     'js/lib/glitch.js',
-    'js/lib/scrollspy.js'
+    'js/lib/scrollspy.js',
+    'js/lib/close-pixelate.js'
     ].concat(_jsDirs);
     
     var imgList = [

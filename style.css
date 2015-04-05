@@ -1,26 +1,16 @@
-/* HELPERS */
-#helper {
-    position: absolute;    left: 0;    top: 0;    width: 50%;    height: 50%;    border-right: 1px solid rebeccapurple;    border-bottom: 1px solid rebeccapurple;    z-index: 1000;
-    display: none;
-}
-
-
-
 html,body{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
     width: 100%;
     height: 100%;
 }
 
 *{
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
     background: hsl(350, 100%, 62%);
-    transition: background-color 0.3s ease;
 }
 
 /* INTRO */
@@ -97,15 +87,11 @@ path.intro-ring:nth-child(2) {
 
 .circle{
   position: absolute;
-
   width: 150px;
-
   height: 150px;
   top: 24px;
   left: 24px;
-
   border: 10px solid #FCFCFC;
-
   border-radius: 50%;
 }
 

@@ -31,6 +31,16 @@ function greetings() {
 
 }
 
+d3.selection.prototype.animate = function(opts) {
+    !opts && (opts = {})
+    var dur = opts.duration ? opts.duration : 1500;
+    var ease = opts.ease ? opts.ease : d3.ease('exp-out');
+    var delay = opts.delay ? opts.delay : 0;
+    delete opts.duration;
+    var t = this.transition().ease(ease).duration(dur).delay(delay);
+    return t;
+};
+
 function initListeners() {
     $w = $(window);
     $(window).on('about-enter', About);
@@ -203,7 +213,7 @@ Portfolio = {
                 onComplete: function() {
                     $('#intro').css('visibility', 'hidden');
                     CodeAnim(jQuery);
-                    setTimeout(_codeIntro.start, 3000);
+                    setTimeout(_codeIntro.start, 2500);
                     setTimeout(freeScroll, 4000);
                     initListeners();
                 }

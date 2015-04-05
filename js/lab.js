@@ -19,8 +19,8 @@ Lab = function($, TweenMax) {
             name: 'Hydrogen Atom',
             description: 'A WebGL experiment which visualizes probablity distribution of Hydrogen atom calculated by its wavefunction. To summarize, the probablity of an electron to be at a point depends on the density of the dots when the core of atom is placed at origin of the grid. Zoom in and out to see seperation of probablities.',
             difficulty: 4.5,
-            tags: ['jQuery', 'Custom Modules', 'SVG', 'canvas', 'Leaflet', 'highcharts', 'twitter api', 'D3.js', 'Angular.js', 'Bootstrap'],
-            backgroundLink: 'img/works/disap-icon-blur.png',
+            tags: ['Quantum Mechanics', 'WebGL', 'ShaderParticleEngine'],
+            backgroundLink: 'img/lab/h-atom.png',
             refs: [
                 {type: 'src',url: 'https://github.com/cihadturhan/h-prob-density'}, 
                 {type: 'image',url: 'http://en.wikipedia.org/wiki/File:Hydrogen_Density_Plots.png'}, 
@@ -33,7 +33,7 @@ Lab = function($, TweenMax) {
             description: 'A small side project made with D3 to visualize daily top 100 TV ratings ordered by AMR%.',
             difficulty: 3,
             tags: ['D3', 'TV', 'Rating'],
-            backgroundLink: 'img/works/disap-icon-blur.png',
+            backgroundLink: 'img/lab/rating-analysis.png',
             refs: [
                 {type: 'doc',url: 'http://sbtanaliz.com/news.php?nid=4'}
             ],
@@ -44,7 +44,7 @@ Lab = function($, TweenMax) {
             description: 'A simple canvas demo to show how a supermassive blackhole warps the vision when it\'s floating in the space.  Here is a <a href="http://iopscience.iop.org/0264-9381/32/6/065001/pdf/0264-9381_32_6_065001.pdf" target="_blank"> an article (pdf) </a> if you are interested. Examine the images instead of reading boring long scientific stuff. <br/>It works slow in iframe so it\'s better to open in new tab to run smoothly.',
             difficulty: 2.5,
             tags: ['jQuery', 'Astronomy', 'Canvas', 'Image Processing'],
-            backgroundLink: 'img/works/disap-icon-blur.png',
+            backgroundLink: 'img/lab/gravitional-lensing.png',
             refs: [
                 {type: 'video',url: 'http://youtu.be/FCoxYlpJq9s?t=1m13s'}, 
                 {type: 'image',url: 'http://upload.wikimedia.org/wikipedia/commons/d/d6/BlackHole_Lensing.gif'}
@@ -56,7 +56,20 @@ Lab = function($, TweenMax) {
             description: 'A proof of concept that anticipates user intent in lieu of rollovers or clicks. See references for code and article',
             difficulty: 2.0,
             tags: ['jQuery', 'UX', 'Fitts\' Law'],
-            backgroundLink: 'img/works/disap-icon-blur.png',
+            backgroundLink: 'img/lab/jquery-aim.png',
+            refs: [
+                {type: 'doc',url: 'https://medium.com/@cihadturhan/a-ux-idea-i-know-where-you-are-aiming-3e00d152afb2'}, 
+                {type: 'src',url: 'https://github.com/cihadturhan/jquery-aim'}
+            
+            ],
+            url: 'http://cihadturhan.github.io/jquery-aim/examples/dropdown.html'
+        }, 
+        {
+            name: 'Yes/No',
+            description: 'Very simple WebGL demo which I found in a video and applied to digital environment.',
+            difficulty: 1.0,
+            tags: ['WebGL', '3dsMax'],
+            backgroundLink: 'img/lab/yesno.png',
             refs: [
                 {type: 'doc',url: 'https://medium.com/@cihadturhan/a-ux-idea-i-know-where-you-are-aiming-3e00d152afb2'}, 
                 {type: 'src',url: 'https://github.com/cihadturhan/jquery-aim'}
@@ -117,8 +130,25 @@ Lab = function($, TweenMax) {
     
     function loadLab(i, dir) {
         var currentLab = labs[i];
-        $('#lab>iframe').attr('src', currentLab.url);
-        
+        //$('#lab>iframe').attr('src', currentLab.url);
+        $('#lab-background').remove();
+        var img = $('<img>').appendTo('#lab')
+                       .attr({
+                           src: currentLab.backgroundLink,
+                           id: 'lab-background',
+                           width: 1200,
+                           height: 800
+                       })
+                       .on('load',function(){
+                $('#lab-background')[0].closePixelate([
+                { shape: 'diamond', resolution: 12, size: 12 },
+                { shape: 'diamond', resolution: 12, offset: 6 },
+                { resolution: 12, alpha: 0.5}]
+            );
+        });
+       $('#lab-foreground-img').attr({src: currentLab.backgroundLink})
+       $('#lab-foreground').find('a').attr('href', currentLab.url)
+
         assignContent(currentLab, dir);
     
     }

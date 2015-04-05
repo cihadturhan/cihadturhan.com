@@ -25,7 +25,7 @@ CodeAnim = function() {
             }
             
             ctx.putImageData(glitchImgDataArray[i++], 0, 0);
-        }, 50)
+        }, 30)
     
     }
     
@@ -35,7 +35,7 @@ CodeAnim = function() {
                 var w = canvas.width, h = canvas.height;
                 
                 for (var i = 0; i < maxCount; i++) {
-                    glitchImgDataArray[i] = glitch.glitchImage(canvas, (maxCount - count) / maxCount * 4 + 1);
+                    glitchImgDataArray[i] = glitch.glitchImage(canvas, (maxCount - count) / maxCount * 3 + 1);
                 }
                 
                 $(canvas).addClass('glitch-canvas').hide();

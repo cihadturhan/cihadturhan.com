@@ -541,8 +541,18 @@ $json = load_package_config();
 				
 			</div>
 
-			<iframe frrameborder="0" src=""> </iframe>
+<!-- 			<iframe frameborder="0" src=""> </iframe> -->
 			
+			<img id="lab-background"/>
+
+			<div id="lab-foreground">
+				<img id="lab-foreground-img" src=""/>
+				
+				<div class="table-cell">
+					<a href="#" target="_blank"> Launch Experiment </a>
+				</div>
+			</div>
+
 			<div class="full-wh-footer">
 				<a class="btn btn-next" href="#contact"> Next: Contact </a>
 			</div>
