@@ -16,7 +16,7 @@ body {
  /* OVERLAY */
 .overlay{
   position: relative;
-  z-index: 1;
+  z-index: 2;
   background: none;
   opacity: 0;
   transition: opacity 5s cubic-bezier(0.04, 0.78, 0.24, 0.99);
@@ -221,6 +221,11 @@ nav#fake-nav {
     left: 0;
     top: 0;
     background: hsl(250, 14%, 26%);
+}
+
+.main-pane.right-pane>.overlay-canvas {
+    z-index: 1;
+    background: none;
 }
 
 /*CODE SNIPPET*/

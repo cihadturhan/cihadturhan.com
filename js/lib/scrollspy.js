@@ -42,8 +42,8 @@
 
 			var isIntersect = !(elLeft > right ||
 				elRight < left ||
-				elTop > bottom ||
-				elBottom < top);
+				elTop >= bottom ||
+				elBottom <= top);
 
 			if (isIntersect) {
 				hits.push(element);

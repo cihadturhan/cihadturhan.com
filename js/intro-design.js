@@ -240,8 +240,11 @@ HydrostatAnim = (function($) {
             
             var diffT = this.millis - t;
             
-            if (diffT > 4000 + settings.animDuration)
-                sketch.stop()
+            if (diffT > 4000 + settings.animDuration){
+                var canvas = sketch.canvas;
+                sketch.destroy();
+                container.appendChild(canvas);
+            }
 
 
             //t = this.millis;
