@@ -166,8 +166,8 @@ nav#fake-nav {
 
 .btn {
     background: #0C9EFF;
-    padding: 15px 8px;
-    font-size: 16pt;
+    padding: 3px 20px;
+    font-size: 14pt;
     vertical-align: middle;
     color: white;
     display: inline-block;
@@ -176,6 +176,7 @@ nav#fake-nav {
     -webkit-appearance: none;
     border: none;
     cursor: pointer;
+    border-radius: 2px 2px 0 0;
 }
 
 .btn:hover{

@@ -1,8 +1,9 @@
  //PERSONAL
 
 About = function() {
-    //DON'T FORGET TO ADD COLOR CHANGING FROM RED/GREEN TO BLACK GRADUALLY
-    //AND DRAW SOME F*CKING ICONS
+    // TO-DO
+    // DON'T FORGET TO ADD COLOR CHANGING FROM RED/GREEN TO BLACK GRADUALLY
+    // AND DRAW SOME F*CKING ICONS
     
     var vis = d3.select('#love-hate-chart');
     var imported;
@@ -21,25 +22,7 @@ About = function() {
         hate: [{name: 'What I Hate',id: 'hate'}]
     };
     
-    var data = {
-        love: [
-            {name: 'Data Visulization',value: 9,desc: 'Without visualization, data is nothing.',id: 'datavis'}, 
-            {name: 'Physics',value: 8,desc: 'Definitely pleased to graduate.',id: 'physics'}, 
-            {name: 'Red Pandas',value: 5,desc: 'They have fluffy tails.',id: 'redpanda'}, 
-            {name: 'Games',value: 4,desc: 'Who doesn\'t love to play either',id: 'game'}, 
-            {name: 'My PC & Mac',value: 3,desc: 'PC for code, Mac for design.',id: 'pcmac'}, 
-            {name: 'Family & Friends',value: 10,desc: 'They make my life complete',id: 'family'}, 
-            {name: 'Myself',value: 1,desc: 'Sometimes I love myself',id: 'me1'}
-        ],
-        hate: [
-            {name: 'Site Builders',value: 5,desc: 'Never offer me wordpress etc job!',id: 'wordpress'}, 
-            {name: 'Prate',value: 4,desc: 'Life is too short to speak much.',id: 'prate'}, 
-            {name: 'Politics',value: 9,desc: 'Please...',id: 'politics'}, 
-            {name: 'Rush',value: 3,desc: 'Rush kills creativity. Slow down.',id: 'rush'}, 
-            {name: 'Others\' work',value: 7,desc: 'Who loves to do others\' work anyway?',id: 'otherworks'}, 
-            {name: 'Myself',value: 1,desc: 'Sometimes I hate myself',id: 'me2'}
-        ]
-    }
+    var data = CV.about;
     
     
     function initVis() {

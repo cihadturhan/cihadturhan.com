@@ -60,10 +60,13 @@ function ClosePixelation( img, options ) {
 ClosePixelation.prototype.render = function( options ) {
   this.options = options
   // set size
+  var offsetX = +this.img.getAttribute("data-offset-left") || 0;
+  var offsetY = +this.img.getAttribute("data-offset-top") || 0;
+  
   var w = this.width = this.canvas.width = this.img.width
   var h = this.height = this.canvas.height = this.img.height
   // draw image on canvas
-  this.ctx.drawImage( this.img, 0, 0, w, h )
+  this.ctx.drawImage( this.img, offsetX, offsetY, w, h )
   // get imageData
 
   try {

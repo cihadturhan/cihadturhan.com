@@ -392,7 +392,7 @@ $json = load_package_config();
             </div>
         </div>
         <div class="full-wh-footer" style="display:none;">
-        	<a class="btn btn-next" href="#skills"> Next: Skills </a>
+        	<a class="btn btn-next" href="#skills">Skills<br><i class="icon-arrow-down"></i></a>
 		</div>
         </div>
 
@@ -408,7 +408,7 @@ $json = load_package_config();
 			</div>
 
 			<div class="full-wh-footer">
-				<a class="btn btn-next" href="#works"> Next: Works </a>
+				<a class="btn btn-next" href="#works">Works<br><i class="icon-arrow-down"></i></a>
 			</div>
         </div>
 
@@ -447,7 +447,7 @@ $json = load_package_config();
 			</div>
 
 			<div class="full-wh-footer">
-				<a class="btn btn-next" href="#about"> Next: About Me </a>
+				<a class="btn btn-next" href="#about">About Me<br><i class="icon-arrow-down"></i></a>
 			</div>
 		</div>
 
@@ -456,21 +456,18 @@ $json = load_package_config();
 			<svg id="love-hate-chart"> </svg>
 		
 			<div class="full-wh-footer">
-				<a class="btn btn-next" href="#lab"> Next: Lab </a>
+				<a class="btn btn-next" href="#lab">Lab<br><i class="icon-arrow-down"></i></a>
 			</div>
 		</div>
 
 		<div id="lab" class="full-wh">
-			<div class="perspective btn-container">
-				<a href="#maximize" class="btn"><button class="maximize"><i class="icon-chevron-left"></i><i class="icon-chevron-right"></i></button></a>
-			</div>
 
 			<div class="menu menu-right">
 
 
 				<div class="lab-nav menu-nav"> 
 					<a href="#lab-prev" class="icon-arrow-left"></a>
-					<div class="title lab-title"> Project 1 </div>
+					<div class="title lab-title">  </div>
 					<a href="#lab-next" class="icon-arrow-right"> </a>
 				</div>
 
@@ -532,11 +529,6 @@ $json = load_package_config();
 					  <li> <span class="icon-film"> </span> <a href="http://asdfa.com" target="_blank"> #4 </a> </li>
 					</ul>
 
-				<a class="menu-link external" id="lab-external" href="#" target="_blank">Standalone*</a>
-				</div>
-
-				<div class="menu-footnote">
-					* Open externally for better performance.
 				</div>
 				
 			</div>
@@ -554,7 +546,7 @@ $json = load_package_config();
 			</div>
 
 			<div class="full-wh-footer">
-				<a class="btn btn-next" href="#contact"> Next: Contact </a>
+				<a class="btn btn-next" href="#contact">Contact<br><i class="icon-arrow-down"></i></a>
 			</div>
 		</div>
 

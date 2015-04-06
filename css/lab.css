@@ -23,11 +23,9 @@
     z-index: 0;
     top: 0;
     bottom: 0;
-    left: 0;
     opacity: 0;
     transition: opacity 0.8s ease;
     height: 100%;
-    width: 100%;
 }
 
 #lab-foreground>.table-cell>a {
@@ -45,6 +43,7 @@
     border-radius: 3pt;
     position: relative;
     z-index: 2;
+    display: inline-block;
 }
 
 #lab .menu {
@@ -59,37 +58,6 @@
     font-size: 12pt;
 }
 
-#lab .btn-container .btn {
-    padding: 10px 0;
-    width: 60px;
-    text-align: center;
-    background: hsl(350, 100%, 52%);
-}
-
-#lab button.maximize {
-    z-index: 100;
-    transform: rotateZ(-45deg);
-    transform-origin: 50% 50%;
-    font-size: 14pt;
-    background: none;
-    color: inherit;
-    border: none;
-    cursor: pointer;
-    text-align: center;
-    outline: none;
-}
-
-#lab button.maximize>i{
-    padding: 0;
-    
-    margin: 2px 0;
-    border: 1px solid black;
-    display: inline-block;
-    /* width: 16pt; */
-    border: none;
-    transition: 0.5s all ease;
-}
-
 #lab>.perspective {
     perspective: 500px;
     -webkit-perspective: 500px;
@@ -99,28 +67,11 @@
     -webkit-transform-origin: 50% 50%;
 }
 
-#lab .btn-container{
-    position: absolute;    
-    top: 0px;    
-    right: 0px;      
-    z-index: 100;
-}
-
-#lab .maximized i.icon-chevron-left {
-    transform: translateX(16pt);
-    -webkit-transform: translateX(16pt);
-}
-
-#lab .maximized i.icon-chevron-right {
-    transform: translateX(-16pt);
-    -webkit-transform: translateX(-16pt);
-}
-
 img#lab-background{
     visibility: hidden;
 }
 
 #lab-background {
-    width: calc(100% - 400px);
-    height: 100%;
+    /* width: calc(100% - 400px); */
+    /* height: 100%; */
 }

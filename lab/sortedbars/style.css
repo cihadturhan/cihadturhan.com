@@ -1,0 +1,386 @@
+
+/* INTRO */
+div.intro {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: hsl(0, 100%, 100%);
+    z-index: 2;
+    transition: all 0.3s ease-in-out;
+    top: 0;
+    background-image: radial-gradient(hsl(0, 100%, 100%) 50%,hsl(0, 0%, 87%));
+    border-top: 1px solid lightgray;
+}
+
+div.intro.step0{
+    top: 40px;
+}
+div.intro.step1{
+    top: 70px;
+}
+div.intro.step2{
+    top: 90px;
+}
+div.intro.step3{
+    top: 170px;
+}
+div.intro.step4{
+    top: 100%;
+}
+
+
+div.title {
+    margin:-15px auto 0 auto;
+    text-align: center;  
+    font-family: "Roboto";
+    font-size: 80px;
+    font-weight: normal;
+    color: hsl(0,0%,35%)
+}
+div.logo {
+    margin: 10% auto 0 auto;
+    background: url("img/SBT_logo.svg") no-repeat center;
+    width: 416px;
+    height: 275px;
+    position: relative;
+    animation: grow 4s forwards;
+}
+
+body.hasintro{
+    overflow: hidden;
+}
+
+
+div.loading {
+    width: 416px;
+    margin: auto;
+    height: 2px;
+    overflow: hidden;
+    background: lightgray;
+}
+.loading .loading_bar {
+    width: 100%;
+    height: 100%;
+    background: hsl(334, 95%, 60%);
+    transition: transform 0.3s;
+    transform: translateX(-100%);
+}
+.loading.active .loading_bar {
+    animation: load 2s 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes load{
+    0%{transform: translateX(-100%)}
+5%{transform: translateX(-90%)}
+30%{transform: translateX(-60%)}
+35%{transform: translateX(-60%)}
+80%{transform: translateX(-23%)}
+85%{transform: translateX(-23%)}
+100%{transform: translateX(0%)}
+}
+
+@keyframes grow{
+    0%{transform: scale(0.95); opacity: 0.7}
+100%{transform: scale(1); opacity: 1}
+}
+
+
+/* INTRO END */
+
+/* TREE*/
+
+
+
+.node {
+
+    cursor: pointer;
+
+}
+
+.node circle {
+
+    fill: #fff;
+
+    stroke: steelblue;
+
+    stroke-width: 1.5px;
+
+}
+
+.node text {
+    font: 10px sans-serif;
+}
+
+.link {
+    fill: none;
+    stroke: #ccc;
+    stroke-width: 1.5px;
+}
+
+/* TREE END */
+
+
+/*DATEPICK */
+
+
+ul{
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+
+ul.dropdown{ 
+    position: relative; 
+    width: 100%; 
+}
+
+ul.dropdown li{ 
+    font-weight: bold; 
+    float: left; 
+    width: 180px; 
+    position: relative;
+    background: #ecf0f1;
+}
+
+ul.dropdown a:hover{ 
+    color: #000; 
+}
+
+ul.dropdown li a { 
+    display: block; 
+    padding: 20px 8px;
+    color: #34495e; 
+    position: relative; 
+    z-index: 2000; 
+    text-align: center;
+    text-decoration: none;
+    font-weight: 300;
+}
+
+ul.dropdown li a:hover,
+ul.dropdown li a.hover{ 
+    background: #3498db;
+    position: relative;
+    color: #fff;
+}
+
+
+ul.dropdown ul{ 
+    display: none;
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 180px; 
+    z-index: 1000;
+}
+
+ul.dropdown ul li { 
+    font-weight: normal; 
+    background: #f6f6f6; 
+    color: #000; 
+    border-bottom: 1px solid #ccc; 
+}
+
+ul.dropdown ul li a{ 
+    display: block; 
+    color: #34495e !important;
+    background: #eee !important;
+} 
+
+ul.dropdown ul li a:hover{
+    display: block; 
+    background: #3498db !important;
+    color: #fff !important;
+} 
+
+.drop > a{
+    position: relative;
+}
+
+.drop > a:after{
+    content:"";
+    position: absolute;
+    right: 10px;
+    top: 40%;
+    border-left: 5px solid transparent;
+    border-top: 5px solid #333;
+    border-right: 5px solid transparent;
+    z-index: 999;
+}
+
+.drop > a:hover:after{
+    content:"";
+    border-left: 5px solid transparent;
+    border-top: 5px solid #fff;
+    border-right: 5px solid transparent;
+}
+
+
+
+
+/* */
+
+#listRender { font-size: 11px; width: 1091px; margin: auto; display: inline-block;} 
+#listRender .month { clear: left;border: none;border-right: 1px solid hsl(0, 0%, 80%);text-align: center;} 
+#listRender .month div { float: left; width: 9.5em; 
+                         padding-right: 0.5em; text-align: right; } 
+#listRender ul { float: left; margin: 0em; padding: 0em; 
+                 list-style: none; overflow: hidden; } 
+#listRender ul.days { margin-left: 10em; text-align: center; } 
+#listRender li {float: left;
+
+                width: 2em;
+                margin: 0em;
+}
+#listRender .days li span {
+    color: hsl(200, 50%, 60%);
+    font-weight: bold;
+}
+#listRender li a { box-sizing: border-box;
+                   display: block;
+                   width: 100%;
+                   padding: 0.20em;
+                   background-color: hsl(0, 0%, 98%);
+                   color: hsl(0, 0%, 0%);
+                   text-decoration: none;} 
+#listRender li span { display: block;width: 100%;padding: 0.125em;background-color: hsl(0, 100%, 100%); color: hsl(0, 0%, 90%); } 
+#listRender li .weekend { background-color: hsl(0, 0%, 92%); } 
+#listRender li .highlight { background-color: #f08080; } 
+#listRender li .selected { box-shadow: inset 0px 0px 0px 1px hsl(0, 100%, 50%); }
+
+
+/*DATEPICK END */
+
+html,body{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    font: 10px sans-serif;
+}
+
+.bar .amr, .amr.axis text {
+    fill: hsl(185, 43%, 58%);
+}
+
+.bar .shr, .shr.axis text {
+    fill: hsl(30, 98%, 69%);
+}
+
+.bar .dur, .dur.axis text {
+    fill: hsl(276, 38%, 60%);
+}
+
+.bar .start, .start.axis text {
+    fill: hsl(149, 42%, 61%);
+}
+
+.start text{
+    fill: #333;
+    font-size: 14px;
+    font-family: "Source Sans Pro";
+}
+
+.bar text {
+    fill: #333;
+    font-size: 14px;
+    font-family: "Source Sans Pro";
+}
+
+.bar line {
+    stroke-width: 1;
+    stroke: hsl(0, 0%, 70%);
+    shape-rendering: crispEdges;
+}
+
+.shr.axis line, .shr.axis path,.dur.axis line, .dur.axis path{
+    display: none;
+}
+
+.axis path, .axis line {
+    fill: none;
+    stroke: black;
+    shape-rendering: crispEdges;
+}
+.axis text {
+    font-weight: bold;
+    font-size: 11px;
+}
+
+.bar rect.row-bg{
+    fill: hsl(202, 63%, 55%);
+    fill-opacity: 0.0;
+    shape-rendering: crispEdges;
+}
+
+.bar:hover rect.row-bg {
+    fill-opacity: 0.2;
+}
+
+#input-container{
+    margin: auto;
+    text-align: center;
+    /*position: fixed;*/
+    width: 100%;
+    background: hsla(0, 100%, 100%, 0.8);
+    box-shadow: 1px 1px 1px hsla(0, 0%, 0%, 0.45);
+
+    overflow: hidden;
+}
+
+#vis{
+    margin: auto;
+    text-align: center;
+}
+
+#orderselect, #targetselect, #categoryselect {
+    width: 180px;
+    text-align: center;
+    font-size: 18px;
+    border: none;
+    padding: 5px 0 5px 0;
+    margin: 0 5px 0 5px;
+}
+
+text.heading{
+    fill: tomato;
+}
+
+.qtip{
+  max-width: 400px !important;
+}
+
+.qtip-content{
+    font-size: 12pt;
+    line-height: 1.2em;
+}
+
+.btn-container{
+    text-align: center;
+    margin: 10px auto;
+}
+
+.btn-container button{
+    color: hsl(0, 100%, 100%);
+    background-color: hsl(210, 29%, 24%);
+    border-color: hsl(210, 29%, 24%);
+    display: inline-block;
+    padding: 2px 5px;
+    margin-bottom: 0;
+    font-size: 11pt;
+    font-weight: normal;
+    line-height: 1.428571429;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid hsla(0, 0%, 0%, 0);
+    border-radius: 4px;
+    user-select: none;
+}

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>  </title>
+
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+        <style>
+            body{
+                background: -webkit-linear-gradient(left, #D4D9E0,#DAE3EE,#D4D9E0)
+            }
+            p{
+                margin: 0;
+                padding: 15px;
+                background: #333;
+                color: whitesmoke;
+                font-size: 14px;
+				text-align: center;
+            }
+
+            a{
+                color: tomato;
+            }
+
+            #holder{
+                padding-top: 20px;
+            }
+			
+			#holder>svg{
+				display:block;
+				margin: 0px auto;
+			}
+
+        </style> 
+        <script>
+            window.onload = function() {
+                var r = Raphael("holder", 600, 700);
+
+                var p1 = "M169.032,661.153l72.885-0.145"
+                        + "	cc0,0,122.273,0.145,167.336,0.145c45.063,0,57.407,0.145,56.729-20.178c-0.584-17.502-25-14.822-65.722-14.822"
+                        + "	cc-16.945,0-112.613,0-171.981,0c-43.632,0-64.632-5.512-57.298-23.678c7.05-14.5,50.092-36.082,105.577-68.502"
+                        + "	cc74.322-44.113,143.715-81.375,143.59-94.5c0.258-17.899-5.481-13.322-120.022-13.322c-31.797,0.355-65.327,0.554-71.467-1.739"
+                        + "	cc-10.992-4.104-20.947-20.265,3.361-35.011c32.838-19.03,86.461-49.428,86.461-49.428s58.685-30.332,55.789-44.404"
+                        + "	cc-1.104-5.429-2.098-13.417-17.584-13.417c-47.354,0.322-99.188,5.155-97.188-18.845c0.667-8.167,3.603-14.388,36.482-31.555"
+                        + "	cc12.588-7.738,36.852-16.779,32.716-31.747c-1.864-6.866-9.821-11.079-16.224-12.335";
+
+                var p2 = "M168.904,68.88"
+                        + "	c18.596-19.891,46.231-37.942,72.885-46.621C299.91,3.684,362.5,14.732,409.125,53.807c37.174,30.087,56.286,73.936,57.049,117.938"
+                        + "	c0.851,48.975-21.031,98.14-66.04,128.736c-52.527,35.464-119.929,37.351-171.981,0.383c-32.738-22.641-52.27-56.868-58.126-94.561"
+                        + "	c-9.355-66.46,37.73-132.399,106.404-144.312c75.023-14.072,147.884,47.098,141.11,122.59"
+                        + "	c-4.989,58.198-57.924,102.735-117.543,95.145c-41.401-4.87-73.357-35.865-81.061-72.759c-3.038-14.546-2.307-30.009,3.103-45.148"
+                        + "	c12.734-35.997,48.42-58.771,87.551-53.677c35.445,5.296,62.146,35.509,60.42,69.996c-1.423,23.61-17.751,45.322-41.354,52.953"
+                        + "	c-25.451,7.731-52.959-4.334-61.781-29.192c-6.667-19.546,4.895-43.712,26.865-47.634c13.725-2.563,29.095,7.455,29,21.942"
+                        + "	c-0.562,6.366-3.989,11.079-10.392,12.335";
+
+                var p3 = "M168.904,68.88"
+                        + "	C187.5,48.989,214.346,28.179,241,19.5c58.121-18.575,120.875-7.075,167.5,32c37.174,30.087,56.5,71,59.5,121"
+                        + "	c0.851,48.975-17.991,110.404-63,141c-52.5,39.5-121,55.667-195.708,11.958c-32.738-22.641-70.936-70.266-76.792-107.958"
+                        + "	C119.5,146.5,143,49,257,15c135.5-30,217.274,91.008,210.5,166.5c1,68-48.75,170-176.875,168.792"
+                        + "	C188,347,140.204,252.727,132.5,215.833c-3.038-14.546-10-77.333,21-124C186.5,47.5,233.5,0,326.167,13.167"
+                        + "	C399.5,25.167,473.5,91.5,468.5,182.5c-1.423,23.61-9,112.75-103,155.333c-25.451,7.731-149,53.667-225.667-96.333"
+                        + "	C115.25,180,131.75,55,250.833,16.833C325.313-3.938,426,24,463.5,137.833c13.667,59.667,2,145.333-85.333,193";
+
+
+                init = function() {
+                    var line = r.path(p1).attr({x: 315, y: 315});
+                    var length = line.getTotalLength();
+                    var lineColor = '#9BC3FF';
+
+                    $('path[fill*="none"]').animate({
+                        'to': 1
+                    }, {
+                        duration: 2500,
+                        step: function(pos, fx) {
+                            var offset = length * fx.pos;
+                            var subpath = line.getSubpath(0, offset);
+                            r.clear();
+                            line2 = r.path(subpath).attr({x: 315, y: 315, stroke: lineColor, 'stroke-width': 2});
+                            llast = line.getPointAtLength(offset);
+                            circle1 = r.circle().attr({cx: llast.x, cy: llast.y, r: 5, fill: 'black', stroke: 'none'});
+                        },
+                        easing: "easeOutCubic",
+                        complete: function() {
+                            line2.animate({
+                                path: p2,
+                                easing: "cubic-bezier(0.750, 0.325, 0.000, 0.990)",
+                                callback: function() {
+
+                                    var pl1 = 'M' + llast.x + ',' + llast.y + 'L' + llast.x + ',' + llast.y;
+                                    var pl2 = 'M298.686,350.5 L298.686,10.5';
+                                    circle2 = r.circle().attr({cx: llast.x, cy: llast.y, r: 5, fill: 'black', stroke: 'none'}).attr('transform', 'r-30, 298.686,180.507');
+                                    circle1.attr('transform', 'r-30, 298.686,180.507');
+
+                                    line3 = r.path(pl1).attr({transform: 'r-30, 298.686,180.507', 'stroke-width': 2, stroke: lineColor});
+
+                                    circle1.animate({cx: 298.686, cy: 10.5, transform: 'r320, 298.686,180.507', easing: "cubic-bezier(0.895, 0.030, 0.685, 0.220)"}, 1000,
+                                            function() {
+                                                this.animate({transform: 'r350, 298.686,180.507', easing: "cubic-bezier(0.215, 0.610, 0.355, 1.000)"}, 500, function() {
+                                                    this.animate({transform: 'r270, 298.686,180.507', easing: "cubic-bezier(0.420, 0.000, 0.060, 1.220)"}, 1750);
+                                                });
+                                            }
+                                    );
+
+
+                                    circle2.animate({cx: 298.686, cy: 350.5, transform: 'r320, 298.686,180.507', easing: "cubic-bezier(0.895, 0.030, 0.685, 0.220)"}, 1000,
+                                            function() {
+                                                this.animate({transform: 'r350, 298.686,180.507', easing: "cubic-bezier(0.215, 0.610, 0.355, 1.000)"}, 500, function() {
+                                                    this.animate({transform: 'r270, 298.686,180.507', easing: "cubic-bezier(0.420, 0.000, 0.060, 1.220)"}, 1750);
+                                                });
+                                            }
+                                    );
+
+                                    line3.animate({path: pl2, transform: 'r320, 298.686,180.507', easing: "cubic-bezier(0.895, 0.030, 0.685, 0.220)"}, 1000,
+                                            function() {
+                                                this.animate({transform: 'r350, 298.686,180.507', easing: "cubic-bezier(0.215, 0.610, 0.355, 1.000)"}, 500, function() {
+                                                    this.animate({transform: 'r270, 298.686,180.507', easing: "cubic-bezier(0.420, 0.000, 0.060, 1.220)"}, 1750);
+                                                });
+                                            }
+                                    );
+
+                                    var anim = Raphael.animation({
+                                        fill: '#333',
+                                        r: 30,
+                                        easing: "ease-in-out",
+                                    }, 1000);
+
+                                    var anim2 = Raphael.animation({
+                                        easing: "cubic-bezier(0.165, 0.840, 0.440, 1.000)",
+                                        opacity: 0,
+                                        r: 80
+                                    }, 2500);
+
+                                    r.circle().attr({cx: 298.686, cy: 180.507, r: 0, stroke: 'none', fill: '#ccc'}).toBack().animate(anim2.delay(750));
+
+                                    circle4 = r.circle().attr({cx: 298.686, cy: 180.507, r: 0, stroke: 'none', fill: 'white'}).animate(anim.delay(250));
+
+                                    this.animate({
+                                        path: p3,
+                                        transform: 'r360, 298.686,180.507',
+                                        easing: "cubic-bezier(0.895, 0.030, 0.685, 0.220)",
+                                        callback: function() {
+                                            r.circle().attr({cx: 298.686, cy: 180.507, r: 170, stroke: 'white', 'stroke-width': 3}).toBack().animate({
+                                                easing: "ease-out",
+                                                stroke: lineColor
+                                            }, 500, function() {
+                                                setTimeout(function() {
+                                                    r.clear();
+                                                    init();
+                                                }, 3000);
+                                            });
+
+                                            this.remove();
+
+                                        }
+                                    }, 1000);
+                                }
+                            }, 1000);
+                        }
+                    });
+                };
+
+                init();
+            }
+        </script>
+    </head>
+    <body>
+        <p> This is a svg version of <a href="https://dribbble.com/shots/1289914-Lasers-and-stuff-GIF">dribble shot</a> by <a href="https://dribbble.com/Jrcanest">Jorge R Canedo Estrada</a></p>
+        <div id="holder" ></div>
+
+    </body>
+</html>

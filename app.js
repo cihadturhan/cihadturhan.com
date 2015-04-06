@@ -104,12 +104,16 @@ var lazyProcess = (function() {
         'img/works/tickr.png', 
         'img/works/tickr-icon-blur.png',
         'img/works/more.png', 
-        'img/works/more-icon-blur.png'
+        'img/works/more-icon-blur.png',
+        'img/lab/gravitional-lensing.png',
+        'img/lab/h-atom.png',
+        'img/lab/jquery-aim.png',
+        'img/lab/rating-analysis.png',
+        'img/lab/yesno.png'
 
     ];
 
-    // delay each image and append the timestamp to prevent caching 
-    var baseUrl = 'http://localhost/side/works-page/img/works/disap.png'; //?time=' + +new Date, 
+    // delay each image and append the timestamp to prevent caching
     loader = new PxLoader();
 
     

@@ -1,18 +1,6 @@
 Skills = function(window, $) {
 
-        var skills = [
-            {name: "HTML",value: 90}, 
-            {name: "CSS",value: 90}, 
-            {name: "jQuery",value: 90},
-            {name: "Sketch",value: 80}, 
-            {name: "PHP",value: 60}, 
-            {name: "WebGL",value: 90}, 
-            {name: "D3",value: 90}, 
-            {name: "Node.js",value: 60},
-            {name: "Angular.js",value: 50}, 
-            {name: "Swift",value: 40}, 
-            
-        ]
+        var skills = CV.skills;
     
     var editor = ace.edit($('#skills .editor')[0]);
     editor.setValue(JSON.stringify(skills, null, 4));

@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript" src="js/d3/d3.v3.min.js"></script>
+        <script type="text/javascript" src="colorbrewer.js"></script>
+
+        <script type="text/javascript" src="//code.jquery.com/jquery-latest.min.js"></script>
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+        <link rel="stylesheet" href="bootstrap.min.css"/>
+        <link rel="stylesheet" href="icomoon/style.css"/>
+
+        <style type="text/css">
+
+            svg {
+                font-family: "Helvetica Neue", Helvetica;
+            }
+
+            .line {
+                fill: none;
+                stroke: #000;
+                stroke-width: 2px;
+            }
+
+            .btn-group {
+                margin: 10px auto;
+            }
+
+            #btn-container {
+                text-align: center;
+            }
+
+            h1{
+                text-align: center;
+            }
+
+        </style>
+    </head>
+    <body>
+    <h1> GDP by Country Visualization</h1>
+    <div id="vis"></div>
+    <div id="btn-container">
+        <div class="btn-group" data-toggle="buttons">
+          <label class="btn btn-primary active">
+            <input type="radio" name="options" value="bar" autocomplete="off" checked onchange="d3.selection.prototype[value].call(svg);"><i class="icon-chart-bar"></i>
+          </label>
+          <label class="btn btn-primary">
+            <input type="radio" name="options" value="donut" autocomplete="off" onchange="d3.selection.prototype[value].call(svg);"><i class="icon-chart-pie"></i>
+          </label>
+          <label class="btn btn-primary">
+            <input type="radio" name="options" value="stackedBar" id="option1" autocomplete="off" onchange="d3.selection.prototype[value].call(svg);"><i class="icon-th-list"></i>
+          </label>
+        </div>
+            
+    </div>
+        <script type="text/javascript" src="demoreel.js"></script>
+    </body>
+</html>

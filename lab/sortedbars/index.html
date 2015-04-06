@@ -1,0 +1,744 @@
+
+<!DOCTYPE html>
+
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8">
+        <title> TOPSecret </title>
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro%3A200%2C300%2C400&subset=latin%2Clatin-ext"/>
+        <link rel="stylesheet" type="text/css" href="style.css"/>
+        <link rel="stylesheet" type="text/css" href="jquery.qtip.min.css"/>
+
+        <script src="http://code.jquery.com/jquery.min.js"></script>
+        <script src="http://mbostock.github.com/d3/d3.js"></script>
+
+        <script src="jquery.qtip.min.js"></script>
+
+        <script src="jquery.datepick.js"></script>
+        <script src="moment.min.js"></script>
+        <script src="prefixfree.min.js"></script>
+
+        <script>
+            var fullData = {}, duration = 600, index, bar, axis_svg, svg, tree, diagonal, activeData = [{
+                    order: 1,
+                    name: 'Program Name',
+                    channel: 'Channel Name',
+                    type: 'Program Type',
+                    start: moment().subtract('hour', 1).toDate(),
+                    starthour: moment().startOf('hour').toDate(),
+                    end: new Date(),
+                    duration: 60,
+                    amr: 10,
+                    shr: 20
+                }],
+            category = 'all', currentDate = moment('2014-03-17 00:00'),
+                    axes = [{name: 'amr', top: -15}, {name: 'shr', top: 25}, {name: 'dur', top: 40}, {name: 'start', top: 55}],
+            dateFormat = d3.time.format("%d.%m.%Y %H:%M:%S");
+
+            var margin = {top: 0, right: 300, bottom: 20, left: 250},
+            width = 1200 - margin.left - margin.right,
+                    height = 150 - margin.top - margin.bottom;
+            var step = 0;
+            var qtipOpts = {// Grab some elements to apply the tooltip to
+                content: {
+                    text: function(event, api) {
+                        // Retrieve content from custom attribute of the $('.selector') elements.
+                        return $(this).attr('title') + '<div class="btn-container"> <button onclick="nextStep()"> Next > </button> </div>';
+                    }
+                },
+                position: {
+                    my: 'top center', // Position my top left...
+                    at: 'bottom center' // at the bottom right of...
+                },
+                overwrite: false,
+                show: {
+                    event: ''
+                },
+                hide: {
+                    event: ''
+                },
+                prerender: true,
+                style: {classes: 'qtip-blue'}
+            };
+            function nextStep() {
+                var prevElem = $('.step[data-step=' + step++ + ']');
+                var currElem = $('.step[data-step=' + step + ']');
+
+                if (prevElem.length) {
+                    prevElem.qtip('hide');
+                }
+
+                if (currElem.length) {
+                    currElem.qtip('show');
+                    $('.intro').css('transform', 'translateY(' + parseInt(currElem.position().top + currElem.outerHeight()) + 'px)');
+                } else {
+                    $('.intro').css('transform', 'translateY(2000px)');
+
+                    setTimeout(function() {
+                        $('.intro').css('display', 'none');
+                        $('body').removeClass('hasintro');
+
+                        height = 3500 - margin.top - margin.bottom;
+                        d3.select('#vis svg').attr('height', height);
+
+                        $('#listRender').datepick('setDate', currentDate.toDate());
+
+                    }, 500);
+                }
+
+
+            }
+
+            function request(datestr) {
+
+                var url1 = "data/" + datestr + " TK.html";
+                var url2 = "data/" + datestr + " AB.html";
+                var url3 = "data/" + datestr + " ABC.html";
+
+                $.when($.get(url1), $.get(url2), $.get(url3)).done(
+                        function(d1, d2, d3) {
+                            fullData.all = parseHTML(d1);
+                            fullData.ab = parseHTML(d2);
+                            fullData.abc = parseHTML(d3);
+                            $('#targetselect').change();
+                        });
+            }
+
+            var formatterList = {
+                channel: function(d) {
+                    return d;
+                },
+                starthour: function(d) {
+                    return moment(d).format('HH:mm') + ' - ' + moment(d).clone().add('hour', 1).format('HH:mm');
+                },
+                type: function(d) {
+                    return d;
+                },
+                0: function() {
+                    return 'All Individuals';
+                }
+            };
+
+            $().ready(function() {
+
+                $('.loading').addClass('active');
+                $('.loading .loading_bar').on('webkitAnimationEnd msAnimationEnd animationEnd animationend', function() {
+                    nextStep();
+                });
+
+                svg = d3.select("#vis").append("svg")
+                        .attr("width", width + margin.left + margin.right)
+                        .attr("height", height + margin.top + margin.bottom)
+                        .append("g")
+                        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+                axis_svg = d3.select("#input-container svg")
+                        .attr("width", width + margin.left + margin.right)
+                        .attr("height", 105)
+                        .append("g")
+                        .attr("transform", "translate(" + margin.left + ",40)");
+                axis_svg.selectAll('g')
+                        .data(axes)
+                        .enter()
+                        .append("g")
+                        .attr("class", function(d) {
+                    return "x axis " + d.name;
+                })
+                        .attr("transform", function(d) {
+                    return "translate(0," + d.top + ")";
+                });
+                axis_svg.selectAll('g')
+                        .append('text')
+                        .attr('transform', function(d, i) {
+                    var y = (d.name == 'amr') ? 16 : -9;
+                    return 'translate(-50,' + y + ')';
+                })
+                        .text(function(d) {
+                    return d.name;
+                });
+
+                tree = d3.layout.tree()
+                        .size([100, 100]);
+                diagonal = d3.svg.diagonal()
+                        .projection(function(d) {
+                    return [d.y, d.x];
+                });
+
+                startAnim(activeData);
+                $('#vis').addClass('step').attr({
+                    'data-step': '5',
+                    title: "You can see program info on this area. Each circle represents AMR%, SHR, Program Duration and Program Start Date according to its color."
+                }).qtip(qtipOpts);
+
+                parseHTML = function(d) {
+                    var tbl = $($(d[0])[3]);
+                    var data = [];
+                    tbl.find('tr:nth-child(n+3):not(:last-child)').each(function() {
+                        var ch = $(this).children();
+                        var q;
+                        var st = moment(currentDate.format('DD.MM.YYYY ') + $(ch[4]).html(), 'DD.MM.YYYY HH:mm:ss').subtract('hours', 2).toDate();
+                        var en = moment(currentDate.format('DD.MM.YYYY ') + $(ch[5]).html(), 'DD.MM.YYYY HH:mm:ss').subtract('hours', 2).toDate();
+                        data.push({
+                            order: +$(ch[0]).html(),
+                            name: $(ch[1]).html(),
+                            channel: $(ch[2]).html(),
+                            type: $(ch[3]).html(),
+                            start: st,
+                            starthour: d3.time.hour(st),
+                            end: en,
+                            duration: (moment(en)).diff(moment(st), 'minutes'),
+                            amr: +$(ch[7]).html().replace(',', '.'),
+                            shr: +$(ch[8]).html().replace(',', '.')
+                        });
+                    });
+                    return data;
+                };
+
+                $('#orderselect, #categoryselect, #targetselect').change(resort);
+
+                $('#listRender').datepick({monthsToShow: [3, 1],
+                    monthsOffset: 2,
+                    showOtherMonths: true,
+                    onSelect: function(date) {
+                        currentDate = moment(date[0]);
+                        request(currentDate.format('DD.MM.YYYY'));
+                    },
+                    useMouseWheel: true,
+                    renderer: {picker: '<div><ul class="days">' +
+                                '{weekHeader}{weekHeader}{weekHeader}{weekHeader}{weekHeader}{weekHeader}' +
+                                '</ul><div>{months}</div></div>',
+                        monthRow: '<div>{months}</div>',
+                        month: '<div class="month"><div>{monthHeader:M yyyy}</div><ul>{weeks}</ul></div>',
+                        weekHeader: '{days}',
+                        dayHeader: '<li>{day}</li>',
+                        week: '{days}',
+                        day: '<li>{day}</li>',
+                        monthSelector: '.month',
+                        daySelector: 'li',
+                        rtlClass: 'rtl',
+                        multiClass: 'multi',
+                        defaultClass: 'default',
+                        selectedClass: 'selected',
+                        highlightedClass: 'highlight',
+                        todayClass: 'today',
+                        otherMonthClass: 'other-month',
+                        weekendClass: 'weekend',
+                        commandClass: 'cmd-',
+                        disabledClass: 'disabled'},
+                    minDate: new Date(2014, 1 - 1, 24),
+                    maxDate: currentDate.toDate(),
+                    changeMonth: false,
+                    dateFormat: 'dd.mm.yyyy'
+                });
+                $(window).scroll(function() {
+                    if ($(this).scrollTop() > 120) {
+                        $('#input-container').css({position: 'fixed', top: '-120px'});
+                        $('#vis').css({'padding-top': $('#input-container').height()})
+                    } else {
+                        $('#input-container').css({position: '', top: ''});
+                        $('#vis').css({'padding-top': ''})
+                    }
+                });
+                $('.step').qtip(qtipOpts);
+
+            });
+            function resort() {
+                var type = $('#orderselect').val(),
+                        target = $('#targetselect').val(),
+                        category = $('#categoryselect').val();
+                formatter = formatterList[category];
+                activeData = d3.nest().key(function(d) {
+                    return formatter(d[category]);
+                })
+                        .entries(fullData[target])
+                        .sort(function(a, b) {
+                    return a.key.localeCompare(b.key);
+                });
+                activeData.forEach(function(d, i) {
+                    d.values.sort(function(a, b) {
+                        return b[type] - a[type];
+                    });
+                });
+                activeData = activeData.reduce(function(p, c, i) {
+                    var arr = [];
+                    arr.push({
+                        heading: true,
+                        name: c.key
+                    });
+                    arr = arr.concat(c.values.map(function(d, i) {
+                        d.order = i + 1;
+                        return d;
+                    }));
+                    p = p.concat(arr);
+                    return p;
+                }, []);
+                startAnim(activeData);
+            }
+
+            function startAnim(data) {
+
+                var order = $('#orderselect').val();
+                var index = d3.range(data.length);
+                var xAmr = d3.scale.linear()
+                        .domain([0, d3.max(data, function(d) {
+                        return d.amr;
+                    })])
+                        .range([0, width]);
+                var xShr = d3.scale.linear()
+                        .domain([0, d3.max(data, function(d) {
+                        return d.shr;
+                    })])
+                        .range([0, width]);
+                var xDur = d3.scale.linear()
+                        .domain([0, d3.max(data, function(d) {
+                        return d.duration;
+                    })])
+                        .range([0, width]);
+                var xStart = d3.time.scale.utc()
+                        .domain([currentDate.clone().startOf('day').toDate(), currentDate.clone().endOf('day').toDate()])
+                        .range([0, width]);
+                var y = d3.scale.ordinal()
+                        .domain(index)
+                        .rangeRoundBands([0, height], .55);
+                var bar = svg.selectAll(".bar")
+                        .data(data, function(d) {
+                    return d.name + d.channel + moment(d.starthour).format('A');
+                });
+                bar.transition()
+                        .duration(duration)
+                        .ease(function(t) {//strong in-out
+                    var a = 0.0;
+                    var b = 0.75;
+                    var c = 0.25;
+                    var d = 1.0;
+                    //console.log(t);
+                    t > 1 && (t = 1);
+                    //return Math.sqrt(1-(t-1)*(t-1));
+                    return t * t * (2 - t) * (2 - t);
+                    //return (1-t)*(1-t)*(1-t)*a + 3*(1-t)*(1-t)*t*b + 3*(1-t)*t*t*c + t*t*t*d;
+                    //return c / 2 * (Math.sqrt(1 - t * t) + 1) + b;
+                })
+                        .delay(function(d, i) {
+                    return i * 5;
+                })
+                        .attr("transform", function(d, i) {
+                    return "translate(0," + y(i) + ")";
+                });
+                var enter = bar.enter().append("g")
+                        .attr("class", "bar");
+                enter.attr("transform", function(d, i) {
+                    return "translate(-500," + y(i) + ")";
+                })
+                        .attr('opacity', 0)
+                        .transition().duration(duration)
+                        .delay(function(d, i) {
+                    return i * 5;
+                })
+                        .attr("transform", function(d, i) {
+                    return "translate(0," + y(i) + ")";
+                })
+                        .attr('opacity', 1);
+                var headingEnter = enter.filter(function(d) {
+                    return ("heading" in d);
+                });
+                enter = enter.filter(function(d) {
+                    return !("heading" in d);
+                });
+                bar.exit()
+                        .attr('opacity', 1)
+                        .transition()
+                        .duration(duration)
+                        .attr("transform", function(d, i) {
+                    return "translate(500)" + d3.select(this).attr('transform');
+                })
+                        .attr('opacity', 0).remove();
+                enter.append("rect")
+                        .attr('class', 'row-bg')
+                        .attr('width', width + margin.left)
+                        .attr('height', 2 * y.rangeBand())
+                        .attr('x', -margin.left)
+                        .attr('y', -y.rangeBand() / 2);
+                enter.append("line")
+                        .attr('stroke', 'black')
+                        .attr("class", "line")
+                        .attr("x1", function(d) {
+                    return d3.min([xDur(d.duration), xShr(d.shr), xAmr(d.amr), xStart(d.start)]);
+                })
+                        .attr("y1", y.rangeBand() / 2)
+                        .attr("x2", function(d) {
+                    return d3.max([xDur(d.duration), xShr(d.shr), xAmr(d.amr), xStart(d.start)]);
+                })
+                        .attr("y2", y.rangeBand() / 2);
+                bar.select('line')
+                        .transition().duration(duration)
+                        .attr("x1", function(d) {
+                    return d3.min([xDur(d.duration), xShr(d.shr), xAmr(d.amr), xStart(d.start)]);
+                })
+                        .attr("x2", function(d) {
+                    return d3.max([xDur(d.duration), xShr(d.shr), xAmr(d.amr), xStart(d.start)]);
+                });
+                enter.append("circle")
+                        .attr("class", "amr")
+                        .attr("r", 5)
+                        .attr('cy', y.rangeBand() / 2)
+                        .attr("cx", function(d) {
+                    return xAmr(d.amr);
+                });
+                bar.select('.amr').transition().duration(duration).attr("cx", function(d) {
+                    return xAmr(d.amr);
+                }).style('fill-opacity', function(d) {
+                    return  order == 'amr' ? 1 : 0.4;
+                });
+                enter.append("circle")
+                        .attr("class", "shr")
+                        .attr("r", 5)
+                        .attr('cy', y.rangeBand() / 2)
+                        .attr("cx", function(d) {
+                    return xShr(d.shr);
+                });
+                bar.select('.shr').transition().duration(duration).attr("cx", function(d) {
+                    return xShr(d.shr);
+                }).style('fill-opacity', function(d) {
+                    return  order == 'shr' ? 1 : 0.6;
+                });
+                enter.append("circle")
+                        .attr("class", "dur")
+                        .attr("r", 5)
+                        .attr('cy', y.rangeBand() / 2)
+                        .attr('title', function(d) {
+                    return moment(d.start).format('LLL');
+                })
+                        .attr("cx", function(d) {
+                    return xDur(d.duration);
+                });
+                bar.select('.dur').transition().duration(duration).attr("cx", function(d) {
+                    return xDur(d.duration);
+                }).style('fill-opacity', function(d) {
+                    return  order == 'duration' ? 1 : 0.6;
+                });
+                enter.append("circle")
+                        .attr("class", "start")
+                        .attr("r", 5)
+                        .attr('cy', y.rangeBand() / 2)
+                        .attr("cx", function(d) {
+                    return xStart(d.start);
+                });
+                bar.select('.start').transition().duration(duration).attr("cx", function(d) {
+                    return xStart(d.start);
+                }).style('fill-opacity', function(d) {
+                    return  order == 'start' ? 1 : 0.6;
+                });
+                headingEnter.append("text")
+                        .attr('class', 'heading')
+                        .attr("text-anchor", "start")
+                        .attr("x", -margin.left + 30)
+                        .attr("y", y.rangeBand() / 2)
+                        .attr("dy", ".35em")
+                        .attr('width', 200)
+                        .attr('title', function(d, i) {
+                    return d.name;
+                })
+                        .text(function(d, i) {
+                    return d.name;
+                })
+                        .style('font-weight', 'bold')
+                        .style('font-size', '14px');
+                enter.append("text")
+                        .attr("text-anchor", "start")
+                        .attr("x", -margin.left + 30)
+                        .attr("y", y.rangeBand() / 2)
+                        .attr("dy", ".35em")
+                        .attr('width', 200)
+                        .attr('title', function(d, i) {
+                    return d.name;
+                })
+                        .text(function(d, i) {
+                    return d.name.length < 30 ? d.name : d.name.substring(0, 30) + '...';
+                });
+                enter.append("text")
+                        .attr('class', 'order')
+                        .attr("text-anchor", "end")
+                        .attr('font-weight', 'bold')
+                        .attr("x", -margin.left + 25)
+                        .attr("y", y.rangeBand() / 2)
+                        .attr("dy", ".35em")
+                        .text(function(d, i) {
+                    return d.order;
+                });
+                enter.each(function(d) {
+                    var that = d3.select(this).append('g')
+                            .style('display', 'none')
+                            .attr('transform', 'translate(' + width + ',' + (-50 + y.rangeBand() / 2) + ')');
+                    //children = d3.entries(d);
+
+                    var children = d3.entries({
+                        CHANNEL: d.channel,
+                        'AMR%': d.amr,
+                        SHR: d.shr,
+                        DURATION: d.duration + ' Dk.'
+                    });
+                    var root = {key: 'root', value: '', children: children};
+                    root.x0 = -50;
+                    root.y0 = 0;
+                    var nodes = tree.nodes(root).reverse(),
+                            links = tree.links(nodes);
+                    nodes.forEach(function(d) {
+                        d.y = d.depth * 50;
+                    });
+                    that.selectAll("path.link")
+                            .data(links)
+                            .enter()
+                            .append("svg:path")
+                            .attr("class", "link")
+                            .transition()
+                            .duration(duration)
+                            .attr("d", function(d) {
+                        var o = {x: 50, y: 0};
+                        return diagonal({source: o, target: o});
+                    });
+                    var nodeGroup = that.selectAll("g.node")
+                            .data(nodes)
+                            .enter()
+                            .append("svg:g")
+                            .attr("class", "node")
+                            .style('opacity', 0)
+                            .attr("transform", function(d) {
+                        return "translate(" + 0 + "," + 50 + ")";
+                    });
+                    nodeGroup.append("svg:circle")
+                            .attr("class", "node-dot")
+                            .attr("r", 3);
+                    nodeGroup.append("svg:text")
+                            .attr("text-anchor", function(d) {
+                        return d.children ? "end" : "start";
+                    })
+                            .attr("dx", function(d) {
+                        var gap = 2 * 6;
+                        return d.children ? -gap : gap;
+                    })
+                            .attr("dy", 3)
+                            .text(function(d) {
+                        return d.value;
+                    });
+                });
+                bar.filter(function(d) {
+                    return !("heading" in d);
+                }).each(function(d) {
+                    var that = d3.select(this).select('g');
+                    var children = d3.entries({
+                        CHANNEL: d.channel,
+                        'AMR%': d.amr,
+                        SHR: d.shr,
+                        DURATION: d.duration + ' Min.'
+                    });
+                    var root = {key: '', value: '', children: children};
+                    root.x0 = -50;
+                    root.y0 = 0;
+                    var nodes = tree.nodes(root).reverse(),
+                            links = tree.links(nodes);
+                    nodes.forEach(function(d) {
+                        d.y = d.depth * 50;
+                    });
+                    that.selectAll("path.link")
+                            .data(links);
+                    var nodeGroup = that.selectAll("g.node")
+                            .data(nodes);
+                    nodeGroup.select("text")
+                            .data(nodes)
+                            .text(function(d) {
+                        var str;
+                        return (str = d.key.toUpperCase()) + (str == '' ? '' : ': ') + d.value;
+                    });
+                });
+                function showNodes() {
+
+                    var that = d3.select(this).select('g');
+                    that.style('display', '');
+                    that.selectAll('path.link')
+                            .transition()
+                            .duration(duration / 2)
+                            .attr("d", diagonal);
+                    that.selectAll('g.node')
+                            .transition()
+                            .duration(duration / 2)
+                            .style('opacity', 1)
+                            .attr("transform", function(d) {
+                        return "translate(" + d.y + "," + d.x + ")";
+                    });
+                }
+
+                function hideNodes() {
+                    var that = d3.select(this).select('g');
+                    //that.style('display', 'none');
+                    that.selectAll('path.link')
+                            .transition()
+                            .duration(duration / 2)
+                            .attr("d", function(d) {
+                        var o = {x: 50, y: 0};
+                        return diagonal({source: o, target: o});
+                    });
+                    that.selectAll('g.node')
+                            .transition()
+                            .duration(duration / 2)
+                            .style('opacity', 0)
+                            .attr("transform", function(d) {
+                        return "translate(" + 0 + "," + 50 + ")";
+                    });
+                }
+
+                enter.on("mouseover", showNodes).on("mouseout", hideNodes);
+                bar.select('text.order').text(function(d, i) {
+                    return d.order;
+                });
+                axis_svg.select('.x.axis.amr')
+                        .transition().duration(duration)
+                        .call(d3.svg.axis()
+                        .scale(xAmr)
+                        .ticks(5)
+                        .orient("bottom"));
+                axis_svg.select('.x.axis.shr')
+                        .transition().duration(duration)
+                        .call(d3.svg.axis()
+                        .scale(xShr)
+                        .orient("top")
+                        .ticks(5)
+                        .tickSubdivide(false));
+                axis_svg.select('.x.axis.dur')
+                        .transition().duration(duration)
+                        .call(d3.svg.axis()
+                        .scale(xDur)
+                        .orient("top")
+                        .ticks(5)
+                        .tickSubdivide(false));
+                axis_svg.select('.x.axis.start')
+                        .transition().duration(duration)
+                        .call(d3.svg.axis()
+                        .scale(xStart)
+                        .orient("top")
+                        .ticks(6)
+                        .tickSubdivide(false));
+            }
+
+
+            /*
+             * 
+             * Credits to http://css-tricks.com/long-dropdowns-solution/
+             *
+             */
+
+
+            /* $(function() {
+             var maxHeight = 400;
+             
+             $('body').on('click', '.dropdown > li> ul> li a').click(function(event) {
+             var e = {
+             html: $(this).html(),
+             value: $(this).attr('data-value')
+             };
+             e.preventDefault();
+             $(this).parents('.dropdown').change(e);
+             });
+             
+             $('body').on('hover', '.dropdown > li',function() {
+             
+             var $container = $(this),
+             $list = $container.find("ul"),
+             $anchor = $container.find("a"),
+             height = $list.height() * 1.1, // make sure there is enough room at the bottom
+             multiplier = height / maxHeight;     // needs to move faster if list is taller
+             
+             // need to save height here so it can revert on mouseout            
+             $container.data("origHeight", $container.height());
+             
+             // so it can retain it's rollover color all the while the dropdown is open
+             $anchor.addClass("hover");
+             
+             // make sure dropdown appears directly below parent list item    
+             $list
+             .show()
+             .css({
+             paddingTop: $container.data("origHeight")
+             });
+             
+             // don't do any animation if list shorter than max
+             if (multiplier > 1) {
+             $container
+             .css({
+             height: maxHeight,
+             overflow: "hidden"
+             })
+             .mousemove(function(e) {
+             var offset = $container.offset();
+             var relativeY = ((e.pageY - offset.top) * multiplier) - ($container.data("origHeight") * multiplier);
+             if (relativeY > $container.data("origHeight")) {
+             $list.css("top", -relativeY + $container.data("origHeight"));
+             }
+             ;
+             });
+             }
+             
+             }, function() {
+             
+             var $el = $(this);
+             
+             // put things back to normal
+             $el
+             .height($(this).data("origHeight"))
+             .find("ul")
+             .css({top: 0})
+             .hide()
+             .end()
+             .find("a")
+             .removeClass("hover");
+             
+             });
+             
+             });
+             */
+
+
+
+
+
+
+        </script>
+
+    </head>
+    <body class="hasintro">
+        <div class="intro">
+            <div class="logo"></div>
+            <div class="title">TOP 100</div>
+            <div class="loading"><div class="loading_bar"></div></div>
+        </div>
+
+        <div id="input-container">
+            <div id="listRender" class="step" data-step="1" title="You can select arbitrary date here.">
+
+            </div>
+            <div>
+                <select id="categoryselect" class="step" data-step="2" title="You can group programs according to these filters">
+                    <option value="0">No Grouping</option>
+                    <option value="channel">Channel</option>
+                    <option value="type">Program Type</option>
+                    <option value="starthour">Start Date</option>
+                </select>
+
+                <select id="orderselect" class="step" data-step="3" title="You can sort them by AMR%, SHR etc from here.">
+                    <option value="amr">AMR%</option>
+                    <option value="shr">SHR</option>
+                    <option value="duration">Program Duration</option>
+                    <option value="start">Start Date</option>
+                </select>
+
+                <select id="targetselect" class="step" data-step="4" title="You can select target audience here.">
+                    <option value="all">All Individuals</option>
+                    <option value="ab">AB</option>
+                    <option value="abc">ABC20+</option>
+                </select>
+            </div>
+            <svg ></svg>
+        </div>
+        <div id="vis">
+
+        </div>
+    </body>
+</html>

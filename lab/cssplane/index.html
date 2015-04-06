@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="style_1.css" />
+        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script>
+            $().ready(function() {
+                $('.send').click(function() {
+                    setTimeout(function() {
+                        $('#plate').removeClass('front');
+                        $('#container').removeClass('beginning');
+                        $('.curvable').addClass('curved');
+                        setTimeout(function() {
+                            $('#container').addClass('hover');
+                            setTimeout(function() {
+                                $('#container').addClass('fly_away_first');
+                                setTimeout(function() {
+                                    $('#container').addClass('fly_away');
+                                    setTimeout(function() {
+                                        $('#plate').addClass('front');
+                                        $('#container').removeClass('fly_away fly_away_first hover').addClass('beginning');
+                                        $('.curvable').removeClass('curved');
+                                    }, 3000);
+                                }, 1500);
+                            }, 1800);
+                        }, 2800);
+                    }, 200);
+                });
+            });
+        </script>
+
+    </head>
+    <body>
+        
+        <div id="info_browser"> Modern browsers only </div>
+
+        <div id="plate" class="front">  
+            <textarea class="message">Dear John Doe,
+
+Just let me know if you're reading my message.
+
+Best
+Cihad</textarea>
+            <button class="send"> Send it </button> <br/>
+        </div>
+
+        <div id="container" class="beginning">
+            <div id="left-wing">
+                <div class="top_left curvable"> </div>
+                <div class="bottom_left curvable"> </div>
+                <div class="wing wing1"></div>
+                <div class="wing wing2"></div>
+            </div>
+
+            <div id="right-wing">
+                <div class="top_right curvable"> </div>
+                <div class="bottom_right curvable"> </div>
+                <div class="wing wing3"></div>
+                <div class="wing wing4"></div>
+            </div>
+
+        </div>
+    </body>
+</html>

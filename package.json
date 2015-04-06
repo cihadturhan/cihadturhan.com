@@ -36,6 +36,7 @@
       },
     "js": {
       "dev": [
+		"js/cv.js",
         "js/intro-code.js",
         "js/intro-design.js",
         "js/skills.js",
