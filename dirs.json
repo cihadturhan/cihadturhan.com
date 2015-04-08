@@ -1,0 +1,53 @@
+{
+    "css": {
+      "dev": {
+        "all":[
+          "css/main.css",
+          "css/skills.css",
+          "css/works.css",
+          "css/lab.css",
+          "css/about.css",
+          "css/contact.css"
+        ]
+      },
+      "dist": {
+        "all": ["css/dist/all.min.css"]
+        }
+    },
+    "js": {
+      "dev": {
+        "plugin":[
+          "js/lib/URLParser.js",
+          "js/lib/ConvexGeometry.js",
+          "js/lib/CopyShader.js",
+          "js/lib/RGBShiftShader.js",
+          "js/lib/EffectComposer.js",
+          "js/lib/RenderPass.js",
+          "js/lib/MaskPass.js",
+          "js/lib/ShaderPass.js",
+          "js/lib/GeometryUtils.js",
+          "js/lib/TrackballControls.js",
+          "res/droid_sans/regular.js",
+          "js/lib/html2canvas.min.js",
+          "js/lib/glitch.js",
+          "js/lib/scrollspy.js",
+          "js/lib/close-pixelate.js"
+        ],
+        "all":[
+          "cv.js",
+          "js/intro-code.js",
+          "js/intro-design.js",
+          "js/skills.js",
+          "js/works.js",
+          "js/lab.js",
+          "js/about.js",
+          "js/contact.js",
+          "js/main.js"
+        ]
+      },
+      "dist": {
+        "plugin": ["js/dist/plugin.min.js"],
+        "all": ["js/dist/all.min.js"]
+      }
+    }
+}

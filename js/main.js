@@ -44,6 +44,7 @@ d3.selection.prototype.animate = function(opts) {
 function initListeners() {
     $w = $(window);
     $(window).on('about-enter', About);
+    $(window).on('contact-enter', Contact);
 
 }
 
@@ -51,12 +52,10 @@ function freeScroll() {
    
    $('.full-wh').on('scrollSpy:enter', function() {
         $(this).css('visibility', 'visible');
-        console.log('enter:', $(this).attr('id'));
     });
 
     $('.full-wh').on('scrollSpy:exit', function() {
         $(this).css('visibility', 'hidden');
-        console.log('exit:', $(this).attr('id'));
     });
 
     $('.full-wh').scrollSpy();
@@ -64,6 +63,7 @@ function freeScroll() {
 
     TweenMax.to($('header'), 1, {y: 0, ease: Power4.easeOut});
     TweenMax.to($('#main .full-wh-footer'), 1, {y: 0, ease: Power4.easeOut});
+    $('html').removeClass('no-scroll')
 
     var $window = $(window); //Window object
     var timer = null;

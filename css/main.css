@@ -303,7 +303,6 @@ nav#fake-nav {
 .intro-text {
     text-align: center;
     width: 100%;
-    /* padding:10pt 0; */
     font-weight: 500;
     line-height: 2.8em;
 }
@@ -469,18 +468,14 @@ ul.menu-tags > li {
     fill: hsl(350, 100%, 52%);
 }
 
-@media (max-width: 767px){
-  .intro-text{
-    line-height: 2.8em;
-  }
+@media (max-width: 1366px){
   
   h1.intro-text{
-    font-size: 30pt;
+    font-size: 45pt;
   }
 
   h2.intro-text {
-    font-size: 15pt;
-    font-weight: 400;
+    font-size: 30pt;
   }
 
 }

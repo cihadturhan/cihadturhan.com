@@ -1,23 +1,29 @@
 Contact = function(){
-    //var contact = CV.contact;
+
+    var contact = CV.contact;
 
     
-_nodes = CV.contact.links;
+var _nodes = contact.links;
+var _passiveNodes = contact.passiveLinks;
 
-_links = [{source: 1, target: _nodes.length - 1}];
+var _links = [{source: 1, target: _nodes.length - 1}];
 
 _nodes.forEach(function(d, i){
       (i!=0) && _links.push({source: 0, target: i}); 
       (i!=0 && i<_nodes.length-1) && _links.push({source: i, target: i+1});
 });
 
+_nodes = _nodes.concat(_passiveNodes);
+
 var data = {
     nodes: [],
     links: []
 };
 
-var width = window.innerWidth,
-    height = window.innerHeight,
+$("#contact-cv").attr('href', contact.cv);
+
+var width = $("#contact-svg-container").width(),
+    height = $("#contact-svg-container").height(),
     root;
 
 _nodes.forEach(function(d,i){
@@ -35,7 +41,7 @@ _nodes.forEach(function(d,i){
 var force = d3.layout.force()
     .nodes(data.nodes)
     .links(data.links)
-    .gravity(0.01)
+    .gravity(0.1)
     .size([width, height])
     .linkDistance(function(d) {
         return d.source == 0 ? 300: 150; 
@@ -48,7 +54,7 @@ var force = d3.layout.force()
     })
     .on("tick", tick);
 
-var svg = d3.select("#contact").append("svg")
+var svg = d3.select("#contact-svg-container").append("svg")
     .attr("width", width)
     .attr("height", height)
 
@@ -165,5 +171,3 @@ var timer = setInterval(function () {
 }, 300)
 
 }
-
-Contact();

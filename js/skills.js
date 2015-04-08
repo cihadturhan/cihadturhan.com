@@ -469,13 +469,11 @@ Skills = function(window, $) {
     
     
     function startRotateAnimation() {
-        console.log(camera.position);
         var currSph = cart2sph(new THREE.Vector3(camera.position.z, camera.position.x, camera.position.y));
         var nextShp = currSph.clone().add(new THREE.Vector3(0, 0, Math.PI*2));
         var newPos;
         TweenMax.to(currSph, 3, {x: nextShp.x, y:  nextShp.y, z:  nextShp.z,ease: Circ.easeOut, onUpdate: function(){            
             newPos = sph2cart(currSph)
-            //console.log(newPos.z, newPos.x, newPos.y)
             camera.position.set(newPos.x, newPos.y, newPos.z);
         }})
     }

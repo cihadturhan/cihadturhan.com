@@ -551,32 +551,11 @@ $json = load_package_config();
 		</div>
 
 		<div id="contact" class="full-wh">
-			
-  			<table id="contact-table">
-          
-              <thead> <tr><th>  Hear from me </th>
-                <th> Let me hear from you </th> 
-                 
-              </tr></thead>
-              <tbody>
-                
-                  <tr><td> Find me on <a href="https://twitter.com/CihadTurhan" target="_blank" id="contact-twitter">Twitter</a> </td> <td style="vertical-align: middle;" rowspan="4"> Send a mail to <a href="mailto:contact@cihadturhan.com">me</a> if you have an interesting project or else. </td></tr>
-                  <tr><td> I rarely write on <a href="https://medium.com/@cihadturhan" target="_blank" id="contact-medium">Medium</a>, follow for the next article </td></tr>
-                  <tr><td> Sometimes, I fiddle on <a href="http://codepen.io/cihadturhan/" target="_blank" id="contact-codepen"> Codepen </a> to make something interesting. </td></tr>
-                  <tr><td> You can find me on <a href="https://news.layervault.com/u/1959/cihad-turhan" target="_blank" id="contact-medium">Designer News</a> commenting on a random post. </td></tr>
-                
-                
-                
-              </tbody>
-              
-  			</table>
-  
-			
-
-			
+			<div id="contact-svg-container"></div>
+			<p> Did you see the disconnected one? He is very sad because he needs an invitation. Maybe you want to make him happy?</p>
 
 			<div class="full-wh-footer">
-				
+  				<h3> This portfolio is rendered by a single javascript file. In case you wonder, download it from <a id="contact-cv" href="#" target="_blank">this link</a>. </h3>
 			</div>
 		</div>
 		

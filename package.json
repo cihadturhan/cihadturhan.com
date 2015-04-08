@@ -21,32 +21,5 @@
     "grunt-contrib-watch": "~0.6.1",
     "time-grunt": "~0.2.8",
     "rebuild": "^0.1.2"
-  },
-  "dirs": {
-    "css": {
-      "dev": [
-        "css/main.css",
-        "css/skills.css",
-        "css/works.css",
-        "css/lab.css",
-        "css/about.css",
-        "css/contact.css"
-      ],
-      "dist": ["css/dist/all.min.css"]
-      },
-    "js": {
-      "dev": [
-		"js/cv.js",
-        "js/intro-code.js",
-        "js/intro-design.js",
-        "js/skills.js",
-        "js/works.js",
-        "js/lab.js",
-        "js/about.js",
-        "js/contact.js",
-        "js/main.js"
-      ],
-      "dist": ["js/dist/all.min.js"]
-  }
   }
 }

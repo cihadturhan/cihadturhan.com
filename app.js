@@ -53,41 +53,29 @@ var lazyProcess = (function() {
     var cssList = [
     'css/fonts.css',
     'css/icomoon/style.css',    
-    ].concat(_cssDirs);
+    ];
+
+    for(var key in _cssDirs){
+       cssList.push.apply(cssList, _cssDirs[key])
+    }
     
     var jsList = [
     'https://cdnjs.cloudflare.com/ajax/libs/sketch.js/1.0.0/sketch.min.js',
     'https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js',
 
-    'js/lib/URLParser.js',
-
     'https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js',
     'https://cdnjs.cloudflare.com/ajax/libs/three.js/r70/three.min.js',
-    
-    'js/lib/ConvexGeometry.js',
-    'js/lib/CopyShader.js',
-    'js/lib/RGBShiftShader.js',
-
-    'js/lib/EffectComposer.js',
-    'js/lib/RenderPass.js',
-    'js/lib/MaskPass.js',
-    'js/lib/ShaderPass.js',
-
-    'js/lib/GeometryUtils.js',
-    'js/lib/TrackballControls.js',
-    'res/droid_sans/regular.js',
 
     'https://cdnjs.cloudflare.com/ajax/libs/gsap/1.16.0/TweenMax.min.js',
     'https://cdnjs.cloudflare.com/ajax/libs/gsap/1.16.0/plugins/ScrollToPlugin.min.js',
 
     'https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.8/ace.js',
-    'https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.8/theme-github.js',
+    'https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.8/theme-github.js'
+    ]
     
-    'js/lib/html2canvas.min.js',
-    'js/lib/glitch.js',
-    'js/lib/scrollspy.js',
-    'js/lib/close-pixelate.js'
-    ].concat(_jsDirs);
+    for(var key in _jsDirs){
+       jsList.push.apply(jsList, _jsDirs[key])
+    }
     
     var imgList = [
         'img/love-hate.svg',
@@ -110,7 +98,6 @@ var lazyProcess = (function() {
         'img/lab/jquery-aim.png',
         'img/lab/rating-analysis.png',
         'img/lab/yesno.png'
-
     ];
 
     // delay each image and append the timestamp to prevent caching

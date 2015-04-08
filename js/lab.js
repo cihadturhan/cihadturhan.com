@@ -41,7 +41,7 @@ Lab = function($, TweenMax) {
                 
                 $('#lab .lab-title').text(currentLab.name);
                 $('#lab-description').html(currentLab.description)
-                d3.select('#lab-difficulty-mask').animate().attr({width: (111 - 4 * 4) * diff / 5 + parseInt(diff) * 4});
+                
                 
                 $('#lab-tags').empty();
                 currentLab.tags.forEach(function(d) {
@@ -55,8 +55,11 @@ Lab = function($, TweenMax) {
                     $('<a>').attr({href: d.url,target: '_blank'}).text(parser.parse(d.url).host)
                     ));
                 });
-                
-                TweenMax.fromTo(container, 1, {opacity: 0,x: -width}, {opacity: 1,x: 0,delay: 0.1,ease: Power4.easeInOut});
+
+                TweenMax.fromTo(container, 1, {opacity: 0,x: -width}, {opacity: 1,x: 0,delay: 0.1,ease: Power4.easeInOut, onComplete: function(){
+                    d3.select('#lab-difficulty-mask').animate().attr({width: (111 - 4 * 4) * diff / 5 + parseInt(diff) * 4});
+                }});
+
             }
         });
     
@@ -66,7 +69,7 @@ Lab = function($, TweenMax) {
     
     function loadLab(i, dir) {
         var currentLab = labs[i];
-        //$('#lab>iframe').attr('src', currentLab.url);
+        
         $('#lab-background').remove();
         var img = $('<img>').appendTo('#lab')
         .attr({

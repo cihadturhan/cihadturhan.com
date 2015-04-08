@@ -1,5 +1,14 @@
 div#contact {
     text-align: center;
+
+}
+
+#contact p {
+    font-size: 14pt;
+}
+
+#contact h3 {
+    padding-top: 15px;
 }
 
 table#contact-table {
@@ -62,4 +71,10 @@ table#contact-table th {
     fill: none;
     stroke: #f0f0f0;
     stroke-width: 1.5px;
+}
+
+#contact-svg-container{
+  width: 1200px;
+  height: 80%;
+  margin: 0px auto;
 }

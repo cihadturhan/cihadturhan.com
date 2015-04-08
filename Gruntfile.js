@@ -4,6 +4,7 @@ module.exports = function(grunt) {
     // 1. All configuration goes here
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
+        dirs: grunt.file.readJSON('dirs.json'),
         banner: '/*\n' + 
         ' * <%= pkg.name %> <%= pkg.version %>\n' + 
         ' * <%= pkg.description %>\n' + 
@@ -27,7 +28,7 @@ module.exports = function(grunt) {
             }
         },
         clean: {
-            src: ['<%= pkg.dirs.css.dist[0] %>', '<%= pkg.dirs.js.dist[0] %>'],
+            src: ['<%= dirs.css.dist.all %>', '<%= dirs.js.dist.plugin %>', '<%= dirs.js.dist.all %>'],
         },
         uglify: {
             options: {
@@ -42,7 +43,8 @@ module.exports = function(grunt) {
             codegen: {quote_keys: true},
             dist: {
                 files: {
-                    '<%= pkg.dirs.js.dist[0] %>':'<%= pkg.dirs.js.dev %>'
+                    '<%= dirs.js.dist.plugin %>':'<%= dirs.js.dev.plugin %>',
+                    '<%= dirs.js.dist.all %>':'<%= dirs.js.dev.all %>'
                 }
             }
         },
@@ -55,7 +57,7 @@ module.exports = function(grunt) {
             },
             dist: {
                 files: {
-                    '<%= pkg.dirs.css.dist[0] %>': '<%= pkg.dirs.css.dev %>'
+                    '<%= dirs.css.dist.all %>': '<%= dirs.css.dev.all %>'
                 }
             }
         },
@@ -77,10 +79,10 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-less');
-    //grunt.registerTask('default', ['shell:echo']);
     grunt.loadNpmTasks('grunt-contrib-watch');
 
     grunt.registerTask('default', ['clean','uglify', 'cssmin']);
     grunt.registerTask('jsbuild', ['uglify']);
     grunt.registerTask('cssbuild', ['cssmin']);
+    grunt.registerTask('clean', ['clean']);
 };

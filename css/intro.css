@@ -10,6 +10,24 @@ div.autocenter {
     filter: url("../#goo");
 }
 
+/* SCROLLBARS */
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+::-moz-scrollbar {
+    display: none;
+}
+
+::-ms-scrollbar {
+    display: none;
+}
+
+::scrollbar {
+    display: none;
+}
+
 /* HELPERS */
 #helper {
     position: absolute;
@@ -39,7 +57,12 @@ div.autocenter {
 html,body {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: border-box;;
+}
+
+html {
+    overflow-x: hidden;
+    width: 100%;
 }
 
 * {
@@ -48,8 +71,7 @@ html,body {
     padding: 0px;
 }
 
-body {
-    /* height: 700%; */
+html:not(.no-scroll) body {
 }
 
 /* INTRO */
@@ -137,8 +159,7 @@ path.intro-ring:nth-child(2) {
 }
 
 .no-scroll{
-    /* overflow: hidden; */
-    height: 100%;
+    overflow: hidden;
 }
 
 .circle {
