@@ -1,5 +1,14 @@
 var intro = (function() {
 
+    function hasWebGL() {
+        //return false;
+        try {
+            return !!window.WebGLRenderingContext && !!document.createElement('canvas').getContext('experimental-webgl');
+        } catch (e) {
+            return false;
+        }
+    }
+
     (function (i, s, o, g, r, a, m) {
           i['GoogleAnalyticsObject'] = r;
           i[r] = i[r] || function () {
@@ -17,6 +26,9 @@ var intro = (function() {
 
     /*INTRO */
     window.scrollTo(0,0);
+
+    if(window.innerWidth < 1025 || !hasWebGL() )
+        return;
     
     var keyframeCount = 30;
     var currKeyframe = 0;

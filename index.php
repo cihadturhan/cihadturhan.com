@@ -52,6 +52,13 @@ $json = load_package_config();
 		<script type="text/javascript" src="js/lib/lazyload.js"></script>
     </head>
     <body>
+    	<div id="mobile-overlay">
+		  <h1> I'm sorry.</h1>
+		  <p> This website contains different types of interactive demos which mobiles can't handle easily.</p>
+		  <p> Come back here with a <a href="http://outdatedbrowser.com/en">new desktop browser</a> </p>
+		  <p> If you want to see my CV.js, <a href="cv.js" target="_blank">here it is</a>.</p>
+		</div>
+		
     	<header style="display:none;">
 			<div id="logo-container">
 				<img id="logo" src="img/logo/logo.svg"> </img>
