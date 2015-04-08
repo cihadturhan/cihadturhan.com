@@ -44,3 +44,22 @@ table#contact-table th {
     background-position: center bottom;
     box-shadow: 0 3px 3px -3px hsla(0, 0%, 0%, 0.49);
 }
+
+
+/* */ 
+
+#contact .node {
+  stroke: #444;
+  stroke-width: 1.5pt;
+}
+
+#contact .parent-link {
+    fill: none;
+    stroke: #9ecae1;
+    stroke-width: 2px;
+}
+#contact .children-link {
+    fill: none;
+    stroke: #f0f0f0;
+    stroke-width: 1.5px;
+}

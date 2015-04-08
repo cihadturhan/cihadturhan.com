@@ -1,11 +1,49 @@
 CV = {
     contact: {
         name: 'Cihad Turhan',
-        twitterName: '@cihadturhan',
-        twitterLink: 'https://twitter.com/CihadTurhan',
-        githubLink: 'https://github.com/cihadturhan',
-        mail: 'contact@cihadturhan.com',
-        cv: 'cv.js'
+        cv: 'cv.js',
+        links: [{
+                name: "Mail",
+                icon: "img/social/email.svg",
+                color: "#0C9688",
+                href: 'mailto:contact@cihadturhan.com',
+                size: 56
+            }, {
+                name: "Twitter",
+                icon: "img/social/twitter.svg",
+                size: 28,
+                href: 'https://twitter.com/CihadTurhan',
+                color: "#2CA9E1"
+            }, {
+                name: "Facebook",
+                icon: "img/social/facebook.svg",
+                size: 28,
+                href: 'https://facebook.com/cihadturhan',
+                color: "#3B5999"
+            }, {
+                name: "Github",
+                icon: "img/social/github.svg",
+                size: 28,
+                href: 'https://github.com/cihadturhan',
+                color: "#0A0F19"
+            }, {
+                name: "Codepen",
+                icon: "img/social/codepen.svg",
+                size: 28,
+                href: 'http://codepen.io/cihadturhan/',
+                color: "#1E8CBE"
+            }, {
+                name: "Medium",
+                icon: "img/social/medium.svg",
+                size: 28,
+                href: 'https://medium.com/@cihadturhan',
+                color: "#041904"
+            }, {
+                name: "Pocket",
+                icon: "img/social/pocket.svg",
+                href: 'http://sharedli.st/cihadturhan',
+                size: 28,color: "#EE4056"
+            }]
     },
     skills: [
         {name: "HTML",value: 90}, 
@@ -76,7 +114,7 @@ CV = {
             
             ],
             url: 'lab/charttransition/'
-        },
+        }, 
         {
             name: '3D CSS Paper Plane',
             description: 'Paper plane animation made with rotate3d property comes with CSS3',
@@ -84,10 +122,10 @@ CV = {
             tags: ['CSS3'],
             backgroundLink: 'img/lab/cssplane.png',
             refs: [
-
+            
             ],
-            url: 'lab/cssplane/'    
-        },
+            url: 'lab/cssplane/'
+        }, 
         {
             name: 'Rating Analysis',
             description: 'A small side project made with D3 to visualize daily top 100 TV ratings ordered by AMR%.',
@@ -131,8 +169,8 @@ CV = {
             tags: ['WebGL', '3dsMax'],
             backgroundLink: 'img/lab/colorwavelengths.png',
             refs: [
-                {type: 'video',url: 'https://d13yacurqjgara.cloudfront.net/users/6108/screenshots/1515226/_rain-bros_master-dribbblr.gif'},
-                {type: 'doc', url: 'https://dribbble.com/shots/1515226-Rain-Bros'}
+                {type: 'video',url: 'https://d13yacurqjgara.cloudfront.net/users/6108/screenshots/1515226/_rain-bros_master-dribbblr.gif'}, 
+                {type: 'doc',url: 'https://dribbble.com/shots/1515226-Rain-Bros'}
             
             ],
             url: 'lab/colorwavelengths/'
