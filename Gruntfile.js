@@ -43,8 +43,8 @@ module.exports = function(grunt) {
             codegen: {quote_keys: true},
             dist: {
                 files: {
-                    '<%= dirs.js.dist.plugin %>':'<%= dirs.js.dev.plugin %>',
-                    '<%= dirs.js.dist.all %>':'<%= dirs.js.dev.all %>'
+                    '<%= dirs.js.dist.plugin[0] %>':'<%= dirs.js.dev.plugin %>',
+                    '<%= dirs.js.dist.all[0] %>':'<%= dirs.js.dev.all %>'
                 }
             }
         },
@@ -57,7 +57,7 @@ module.exports = function(grunt) {
             },
             dist: {
                 files: {
-                    '<%= dirs.css.dist.all %>': '<%= dirs.css.dev.all %>'
+                    '<%= dirs.css.dist.all[0] %>': '<%= dirs.css.dev.all %>'
                 }
             }
         },
@@ -84,5 +84,4 @@ module.exports = function(grunt) {
     grunt.registerTask('default', ['clean','uglify', 'cssmin']);
     grunt.registerTask('jsbuild', ['uglify']);
     grunt.registerTask('cssbuild', ['cssmin']);
-    grunt.registerTask('clean', ['clean']);
 };

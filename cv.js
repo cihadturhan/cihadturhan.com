@@ -661,7 +661,7 @@ CV = {
             ]
         }, {
             name: 'More?',
-            description: 'Of course there is more, <a href="#contact">contact</a> me if you are interested.',
+            description: 'Of course there is more, contact me if you are interested.',
             timeSpent: 1,
             startDate: 'Jan 2015',
             endDate: '',

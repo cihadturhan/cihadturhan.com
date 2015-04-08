@@ -44,8 +44,8 @@ $json = load_package_config();
 
 		<link rel="stylesheet" href="css/intro.css"/>
 		<script>
-			var _jsDirs = <?php echo json_encode($json['dirs']['js'][DIR]); ?>;
-			var _cssDirs = <?php echo json_encode($json['dirs']['css'][DIR]); ?>;
+			var _jsDirs = <?php echo json_encode($json['js'][DIR]); ?>;
+			var _cssDirs = <?php echo json_encode($json['css'][DIR]); ?>;
 		</script>
 		<script type="text/javascript" src="js/lib/PxLoader.min.js"></script>
 		<script type="text/javascript" src="js/lib/pxloader-images.min.js"></script>
@@ -62,13 +62,13 @@ $json = load_package_config();
 			-->
 			<nav> 
 				<ul>
-					<li> <a href="#main" class="active"> INTRO </a></li><li> <a href="#skills"> SKILLS </a></li><li> <a href="#works"> WORKS </a></li><li> <a href="#about"> ABOUT </a></li><li> <a href="#lab"> LAB </a></li><li> <a href="#contact"> CONTACT </a></li>
+					<li> <a href="#main" class="active"> INTRO </a></li><li> <a href="#skills"> SKILLS </a></li><li> <a href="#works"> WORKS </a></li><li> <a href="#lab"> LAB </a></li><li> <a href="#about"> ABOUT </a></li><li> <a href="#contact"> CONTACT </a></li>
 				</ul>
 			</nav>
 
 			<nav id="fake-nav"> 
 				<ul>
-					<li> <a href="#main" class="active"> INTRO </a></li><li> <a href="#skills"> SKILLS </a></li><li> <a href="#works"> WORKS </a></li><li> <a href="#about"> ABOUT </a></li><li> <a href="#lab"> LAB </a></li><li> <a href="#contact"> CONTACT </a></li>
+					<li> <a href="#main" class="active"> INTRO </a></li><li> <a href="#skills"> SKILLS </a></li><li> <a href="#works"> WORKS </a></li><li> <a href="#lab"> LAB </a></li><li> <a href="#about"> ABOUT </a></li><li> <a href="#contact"> CONTACT </a></li>
 				</ul>
 			</nav>
     	</header>
@@ -447,15 +447,6 @@ $json = load_package_config();
 			</div>
 
 			<div class="full-wh-footer">
-				<a class="btn btn-next" href="#about">About Me<br><i class="icon-arrow-down"></i></a>
-			</div>
-		</div>
-
-		<div id="about" class="full-wh">
-			<div id="svg-container"></div>
-			<svg id="love-hate-chart"> </svg>
-		
-			<div class="full-wh-footer">
 				<a class="btn btn-next" href="#lab">Lab<br><i class="icon-arrow-down"></i></a>
 			</div>
 		</div>
@@ -545,6 +536,15 @@ $json = load_package_config();
 				</div>
 			</div>
 
+			<div class="full-wh-footer">
+				<a class="btn btn-next" href="#about">About Me<br><i class="icon-arrow-down"></i></a>
+			</div>
+		</div>
+
+		<div id="about" class="full-wh">
+			<div id="svg-container"></div>
+			<svg id="love-hate-chart"> </svg>
+		
 			<div class="full-wh-footer">
 				<a class="btn btn-next" href="#contact">Contact<br><i class="icon-arrow-down"></i></a>
 			</div>

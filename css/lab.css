@@ -5,7 +5,7 @@
 #lab-foreground{
     position: absolute;
     width: calc(100% - 400px);
-    left: 0px;
+    left: 400px;
     top: 50px;
     height: calc(100% - 50px);
     background-position: center center;
@@ -50,7 +50,7 @@
     position: absolute;
     top: 0px;
     bottom: 0;
-    right: 0px;
+    left: 0;
     background: #2A2835;
 }
 
@@ -72,6 +72,5 @@ img#lab-background{
 }
 
 #lab-background {
-    /* width: calc(100% - 400px); */
-    /* height: 100%; */
+    margin-left: 400px;
 }

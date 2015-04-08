@@ -95,9 +95,12 @@ var lazyProcess = (function() {
         'img/works/more-icon-blur.png',
         'img/lab/gravitional-lensing.png',
         'img/lab/h-atom.png',
+        'img/lab/charttransition.png',
+        'img/lab/cssplane.png',
         'img/lab/jquery-aim.png',
         'img/lab/rating-analysis.png',
-        'img/lab/yesno.png'
+        'img/lab/yesno.png',
+        'img/lab/colorwavelengths.png',
     ];
 
     // delay each image and append the timestamp to prevent caching

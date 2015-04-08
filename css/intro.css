@@ -138,6 +138,7 @@ path.intro-ring:nth-child(2) {
     font-family: Helvetica, Calibri, Fira, sans-serif;
     font-size: 26pt;
     color: rgb(229, 229, 229);
+    line-height: 1.42857143;
 }
 
 /*LOADING */

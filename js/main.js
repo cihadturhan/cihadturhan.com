@@ -25,9 +25,9 @@ function greetings() {
     console.log('Have a nice day. Cheers');
 
 //TO-DO uncomment
-/*for(var key in console){
-        console[key] = function(){};
-    }*/
+for(var key in console){
+    console[key] = function(){};
+}
 
 }
 
