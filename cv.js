@@ -117,9 +117,7 @@ CV = {
             tags: ['D3'],
             backgroundLink: 'img/lab/charttransition.png',
             refs: [
-                {type: 'doc',url: 'https://medium.com/@cihadturhan/a-ux-idea-i-know-where-you-are-aiming-3e00d152afb2'}, 
-                {type: 'src',url: 'https://github.com/cihadturhan/jquery-aim'}
-            
+               
             ],
             url: 'lab/charttransition/'
         }, 
