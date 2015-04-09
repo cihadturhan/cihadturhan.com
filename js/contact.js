@@ -15,6 +15,12 @@ _nodes.forEach(function(d, i){
 
 _nodes = _nodes.concat(_passiveNodes);
 
+var _links2 = [{source: 1, target: _nodes.length - 1}];
+_nodes.forEach(function(d, i){
+      (i!=0) && _links2.push({source: 0, target: i}); 
+      (i!=0 && i<_nodes.length-1) && _links2.push({source: i, target: i+1});
+});
+
 var data = {
     nodes: [],
     links: []
@@ -167,7 +173,19 @@ var timer = setInterval(function () {
     
     if (++i == max) {
         clearInterval(timer);
+        setTimeout(addDribble, 6000);
     }
 }, 300)
+
+function addDribble(){
+    while(data.links.length)
+        data.links.pop();
+
+     _links2.forEach(function(d){
+         data.links.push(d);
+     });
+
+     update();   
+}
 
 }

@@ -74,7 +74,9 @@ table#contact-table th {
 }
 
 #contact-svg-container{
-  width: 1200px;
+  width: 800px;
   height: 80%;
   margin: 0px auto;
+  border: 1px solid whitesmoke;
+  height: 600px;
 }
