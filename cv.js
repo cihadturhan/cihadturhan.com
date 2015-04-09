@@ -44,14 +44,15 @@ CV = {
                 href: 'http://sharedli.st/cihadturhan',
                 size: 28,
                 color: "#EE4056"
-            }],
-        passiveLinks: [{
+            },
+            {
                 name: "Dribble",
                 icon: "img/social/dribble.svg",
                 href: 'https://dribbble.com/cihadturhan',
                 size: 28,
                 color: "#EA4C89"
-            }]
+            }],
+        passiveLinks: []
     },
     skills: [
         {name: "HTML",value: 90}, 

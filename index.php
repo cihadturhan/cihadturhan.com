@@ -53,10 +53,10 @@ $json = load_package_config();
     </head>
     <body>
     	<div id="mobile-overlay">
-		  <h1> I'm sorry.</h1>
+		  <h1> I'm sorry :(</h1>
 		  <p> This website contains different types of interactive demos which mobiles can't handle easily.</p>
 		  <p> Come back here with a <a href="http://outdatedbrowser.com/en">new desktop browser</a> </p>
-		  <p> If you want to see my CV.js, <a href="cv.js" target="_blank">here it is</a>.</p>
+		  <p> If you want to see my resume in javascript, <a href="cv.js" target="_blank">here it is</a>.</p>
 		</div>
 		
     	<header style="display:none;">
@@ -559,7 +559,6 @@ $json = load_package_config();
 
 		<div id="contact" class="full-wh">
 			<div id="contact-svg-container"></div>
-			<p> Did you see the disconnected one? He is very sad because he needs an invitation. Maybe you want to make him happy?</p>
 
 			<div class="full-wh-footer">
   				<h3> This portfolio is rendered by a single javascript file. In case you wonder, download it from <a id="contact-cv" href="#" target="_blank">this link</a>. </h3>
