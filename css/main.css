@@ -100,7 +100,7 @@ nav>ul>li>a.active {
 
 .full-wh-footer>.btn {
     height: 100%;
-    line-height: 1.3em;
+    padding: 3pt 20px;
 }
 
 nav:not(#fake-nav)>ul>li>a:hover {
@@ -153,7 +153,7 @@ nav#fake-nav {
 .btn {
     background: #0C9EFF;
     padding: 3px 20px;
-    font-size: 14pt;
+    font-size: 12pt;
     vertical-align: middle;
     color: white;
     display: inline-block;
