@@ -501,7 +501,7 @@ CV = {
                 }
             ]
         }, {
-            name: 'H**** S****',
+            name: 'Hayatimin Soundtracki',
             description: 'An upcoming web experiment which involves WebGL visualization and WebAudio signal processing. I and <a href="https://twitter.com/ademilter" target="_blank">@ademilter</a> collabrated on the frontend side.',
             timeSpent: 180,
             startDate: 'Feb 2015',
