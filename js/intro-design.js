@@ -176,18 +176,15 @@ HydrostatAnim = (function($) {
             ctx.lineTo(e.x, e.y);
             ctx.closePath();
 
-            /*h = settings.colour.h * this.shade;
-            s = settings.colour.s * 100 * this.shade;
-            v = settings.colour.v * 100 * this.shade;*/
             
-            ctx.fillStyle = this.color; // 'hsl(' + this.color.h + ',' + this.color.s + '%,' + this.color.v + '%)';
+            ctx.fillStyle = this.color;
             ctx.fill();
             
             if (settings.thickness > 2) {
                 
                 v += settings.darkTheme ? -10 : 10;
                 
-                ctx.strokeStyle = this.color; //'hsl(' + this.color.h + ',' + this.color.s + '%,' + this.color.v + '%)';
+                ctx.strokeStyle = this.color;
                 ctx.lineWidth = 1;
                 ctx.stroke();
             }

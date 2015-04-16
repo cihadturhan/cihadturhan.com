@@ -4,8 +4,9 @@
 
 #lab-foreground{
     position: absolute;
+    width: 75%;
     width: calc(100% - 400px);
-    left: 400px;
+    left: 0;
     top: 50px;
     height: calc(100% - 50px);
     background-position: center center;
@@ -47,11 +48,6 @@
 }
 
 #lab .menu {
-    position: absolute;
-    top: 0px;
-    bottom: 0;
-    left: 0;
-    background: #2A2835;
 }
 
 #lab .title.lab-title {
@@ -72,5 +68,5 @@ img#lab-background{
 }
 
 #lab-background {
-    margin-left: 400px;
+    margin-left: 0;
 }

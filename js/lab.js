@@ -32,10 +32,11 @@ Lab = function($, TweenMax) {
     });
     
     function assignContent(currentLab, dir) {
+        dir = dir ? dir: 1;
         var width = $('#lab .menu').width() * (-dir);
         var container = $('#lab .menu-body');
         
-        TweenMax.to(container, 1, {x: width,opacity: 0,ease: Power4.easeInOut,onComplete: function() {
+        TweenMax.fromTo(container, 0.8,  {opacity: 1, x: 0}, {x: width, opacity: 0,ease: Power4.easeInOut,onComplete: function() {
                 
                 var diff = currentLab.difficulty;
                 
@@ -56,7 +57,7 @@ Lab = function($, TweenMax) {
                     ));
                 });
 
-                TweenMax.fromTo(container, 1, {opacity: 0,x: -width}, {opacity: 1,x: 0,delay: 0.1,ease: Power4.easeInOut, onComplete: function(){
+                TweenMax.fromTo(container, 0.8, {opacity: 0,x: -width}, {opacity: 1,x: 0,delay: 0.1,ease: Power4.easeInOut, onComplete: function(){
                     d3.select('#lab-difficulty-mask').animate().attr({width: (111 - 4 * 4) * diff / 5 + parseInt(diff) * 4});
                 }});
 

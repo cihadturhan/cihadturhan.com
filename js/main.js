@@ -16,7 +16,7 @@ function adjustEditor(editor) {
 
 }
 
-function greetings() {
+function Greetings() {
     console.log('୧༼ ͡◉ل͜ ͡◉༽୨');
     console.log('Hello!');
     console.log('Are you here for the source code?');
@@ -24,10 +24,11 @@ function greetings() {
     console.log('Just send mail to contact@cihadturhan.com. I\'ll send you finished version.');
     console.log('Have a nice day. Cheers');
 
-//TO-DO uncomment
-for(var key in console){
-    console[key] = function(){};
-}
+    //TO-DO uncomment
+    for (var key in console) {
+        console[key] = function() {
+        };
+    }
 
 }
 
@@ -43,36 +44,28 @@ d3.selection.prototype.animate = function(opts) {
 
 function initListeners() {
     $w = $(window);
+    
+    $(window).on('hello-enter', Hello);
+    $(window).on('main-enter', Intro);
     $(window).on('about-enter', About);
     $(window).on('contact-enter', Contact);
 
 }
 
-function freeScroll() {
-   
-   $('.full-wh').on('scrollSpy:enter', function() {
+function scrollSpy() {
+    var $window = $(window);
+
+    $('.full-wh').on('scrollSpy:enter', function() {
         $(this).css('visibility', 'visible');
     });
-
+    
     $('.full-wh').on('scrollSpy:exit', function() {
         $(this).css('visibility', 'hidden');
     });
-
+    
     $('.full-wh').scrollSpy();
 
 
-    TweenMax.to($('header'), 1, {y: 0, ease: Power4.easeOut});
-    TweenMax.to($('#main .full-wh-footer'), 1, {y: 0, ease: Power4.easeOut});
-    $('html').removeClass('no-scroll')
-
-    var $window = $(window); //Window object
-    var timer = null;
-    
-    var scrollTime = 0.3; //Scroll time
-    var scrollDistance = 300; //Distance. Use smaller value for shorter scroll and greater value for longer scroll
-    var scrollDistanceMac = 60;
-    var snapTime = 0.9;
-    
     var sections = [];
     
     $('body>.full-wh').each(function() {
@@ -83,15 +76,17 @@ function freeScroll() {
         });
     });
     
+    
+
     var maxScroll = sections[1].top;
     
     $window.on("scroll", function() {
         var scrollTop = $window.scrollTop();
-        var height = $(window).height();
+        var height = $window.height();
         var totalHeight = $('body').height() - height;
         var percent = scrollTop / totalHeight;
         var width = $('#fake-nav').width();
-        var navLeft = percent * width * 6 - width;
+        var navLeft = percent * width * 7 - width;
         
         TweenMax.to($('#fake-nav'), 0, {x: navLeft});
         TweenMax.to($('#fake-nav>ul'), 0, {x: -navLeft});
@@ -101,8 +96,7 @@ function freeScroll() {
             
             if (scrollTop + height > maxScroll && scrollTop + height > d.top + d.height * 0.50 && scrollTop + height < (d.top + d.height)) {
                 
-                $window.trigger(d.el.attr('id') + '-enter')
-                console.log(d.el.attr('id') + '-enter');
+                $window.trigger(d.el.attr('id') + '-enter');
                 
                 maxScroll = d.top + d.height;
                 
@@ -114,10 +108,21 @@ function freeScroll() {
             maxScroll = scrollTop + height;
         }
     });
+}
+
+function freeScroll() {
     
+    TweenMax.to($('header'), 1, {y: 0,ease: Power4.easeOut});
+    TweenMax.to($('#main .full-wh-footer'), 1, {y: 0,ease: Power4.easeOut});
+    $('html').removeClass('no-scroll')
+    
+    var $window = $(window); //Window object
+    var timer = null;
+    
+    var snapTime = 0.9;
     
     $window.on("mousewheel DOMMouseScroll", function(event) {
-
+        
         var delta = event.originalEvent.wheelDelta / 120 || -event.originalEvent.detail / 3;
         var scrollTop = $window.scrollTop();
         
@@ -139,46 +144,31 @@ function freeScroll() {
             });
         
         }, 600);
-        
-        /*if (!isMac) {
-            
-            event.preventDefault();
-            
-            (finalScroll < $window.height()) && (finalScroll = $window.height())
-            
-            TweenMax.to($window, scrollTime, {
-                scrollTo: {y: finalScroll,autoKill: true},
-                ease: Power1.easeOut, //For more easing functions see http://api.greensock.com/js/com/greensock/easing/package-detail.html
-                autoKill: true,
-                overwrite: 5
-            });
-        
-        } else {
-            $(window).scrollTop(scrollTop - delta * scrollDistanceMac)
-        }*/
     });
 
 }
-;
 
 
 
 Portfolio = {
     start: function() {
+        initListeners();
+        scrollSpy();
+        
         TweenMax.to($('header'), 0, {y: -$('header').height()});
         TweenMax.to($('#main .full-wh-footer'), 0, {y: $('#main .full-wh-footer').height()});
         $('header').show();
         $('#main .full-wh-footer').show();
-
-        greetings(window);
         
-        var _codeIntro = CodeAnim(jQuery);
+        Greetings(window);
+        
+        window._codeIntro = CodeAnim(jQuery);
         
         var _skills = Skills(window, jQuery);
         var _works = Works();
         var _lab = Lab(jQuery, TweenMax);
         
-        _codeIntro.init(function() {
+        window._codeIntro.init(function() {
             
             var $window = $(window); //Window object
             var scrollTime = 1.2; //Scroll time
@@ -197,11 +187,10 @@ Portfolio = {
                     overwrite: 5
                 });
             });
-
-            setTimeout(function(){
-                HydrostatAnim(jQuery)
-                IntroTextAnim(jQuery);
-            }, scrollTime*1000)
+            
+            setTimeout(function() {
+            
+            }, scrollTime * 1000)
             
             
             TweenMax.to($window, scrollTime, {
@@ -211,11 +200,7 @@ Portfolio = {
                 delay: 1,
                 overwrite: 5,
                 onComplete: function() {
-                    $('#intro').css('visibility', 'hidden');
-                    CodeAnim(jQuery);
-                    setTimeout(_codeIntro.start, 2500);
-                    setTimeout(freeScroll, 4000);
-                    initListeners();
+                    freeScroll();
                 }
             });
         });

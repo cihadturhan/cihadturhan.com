@@ -1,0 +1,13 @@
+canvas{
+    position: absolute;
+    top:0;
+    left: 0;
+}
+
+#canvas-background{
+   z-index: 0;
+}
+
+#canvas-foreground{
+   z-index: 1;
+}

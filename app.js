@@ -82,7 +82,9 @@ var lazyProcess = (function() {
     'https://cdnjs.cloudflare.com/ajax/libs/gsap/1.16.0/plugins/ScrollToPlugin.min.js',
 
     'https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.8/ace.js',
-    'https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.8/theme-github.js'
+    'https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.8/theme-github.js',
+
+    'https://cdnjs.cloudflare.com/ajax/libs/slabText/2.3/jquery.slabtext.min.js'
     ]
     
     for(var key in _jsDirs){

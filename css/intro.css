@@ -51,6 +51,7 @@ div.autocenter {
     position: relative;
     padding-top: 50px;
     background: hsl(0, 0%, 95%);
+    background: linear-gradient(hsl(0, 0%, 95%), hsl(0, 0%, 85%));
     visibility: hidden;
 }
 

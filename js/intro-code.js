@@ -168,16 +168,5 @@ _CodeAnim = (function($) {
             changeLine(count, id, that)
         });
     }
-    
-    console.log(+new Date)
 
 });
-
-
-IntroTextAnim = function() {
-    setTimeout(function() {
-        $(".overlay").css('display', 'block');
-        $(".overlay").css('display');
-        $(".overlay").css({opacity: 1})
-    }, 4000)
-}

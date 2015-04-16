@@ -35,6 +35,8 @@
         ],
         "all":[
           "cv.js",
+          "js/hello.js",
+          "js/intro.js",
           "js/intro-code.js",
           "js/intro-design.js",
           "js/skills.js",

@@ -161,7 +161,7 @@ CV = {
             name: 'Yes/No',
             description: 'Simple recreation of YES/NO Shape by <a href="http://en.wikipedia.org/wiki/Markus_Raetz" target="_blank">Markus Reatz</a> in WebGL',
             difficulty: 1.0,
-            tags: ['CSS3', 'SVG', 'Illustrator'],
+            tags: ['WebGL', '3dsMax'],
             backgroundLink: 'img/lab/yesno.png',
             refs: [
                 {type: 'video',url: 'https://www.youtube.com/watch?v=eO1yYBm5wSo'}
@@ -173,7 +173,7 @@ CV = {
             name: 'Rain-Bros SVG',
             description: 'SVG version of animation done by <a href="https://www.twitter.com/somethingsavage">@somethingsavage</a>',
             difficulty: 2.5,
-            tags: ['WebGL', '3dsMax'],
+            tags: ['CSS3', 'SVG', 'Illustrator'],
             backgroundLink: 'img/lab/colorwavelengths.png',
             refs: [
                 {type: 'video',url: 'https://d13yacurqjgara.cloudfront.net/users/6108/screenshots/1515226/_rain-bros_master-dribbblr.gif'}, 
