@@ -42,7 +42,6 @@ $json = load_package_config();
         <meta itemprop="image" content="http://www.cihadturhan.com/img/site-intro.png">
 
         <link rel="stylesheet" href="css/intro.css"/>
-        <link type="text/css" media="screen" rel="stylesheet" href="awwwards.css" />
         <script>
             var _jsDirs = <?php echo json_encode($json['js'][DIR]); ?>;
             var _cssDirs = <?php echo json_encode($json['css'][DIR]); ?>;
@@ -144,10 +143,6 @@ $json = load_package_config();
     </div>
 
     <div id="hello" class="full-wh">
-        
-        <div id="awwwards" class="nominee green top left">
-            <a href="http://www.awwwards.com/best-websites/cihadturhan-com/" target="_blank">Awwwards</a>
-        </div>
         
         <div class="overlay">
             <div class="table-cell">
