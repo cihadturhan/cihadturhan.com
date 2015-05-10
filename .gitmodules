@@ -1,0 +1,3 @@
+[submodule "lab/tr-geojson"]
+	path = lab/tr-geojson
+	url = https://github.com/cihadturhan/tr-geojson.git
