@@ -65,8 +65,23 @@ function draw() {
 }
 
 Draggable.create(fg, {type: "x",liveSnap: true,edgeResistance: 0.5,throwProps: true,bounds: window,
-    snap:{
+    snap: {
         x: function(endValue) {
-        return Math.round(endValue/5 / stepWidth) * stepWidth;
-    }}
+            return Math.round(endValue / 5 / stepWidth) * stepWidth;
+        }}
 });
+
+
+function onDrop(e) {
+    e.preventDefault();
+    $(e.target).removeClass('drop-active').clone().appendTo($(e.target).parent())
+}
+
+function onDragOver(e) {
+    e.preventDefault();
+    $(e.target).addClass('drop-active')
+}
+
+function onDragLeave(e) {
+    $(e.target).removeClass('drop-active')
+}

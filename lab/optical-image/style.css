@@ -1,3 +1,13 @@
+#welcome{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    background: white;
+}
+
 canvas{
     position: absolute;
     top:0;
@@ -10,4 +20,37 @@ canvas{
 
 #canvas-foreground{
    z-index: 1;
+}
+
+.frame {
+    width: 50vw;    
+    height: 50vh;    
+    background: url("img/film-frame.png") 100% 100% no-repeat;    
+    background-size: contain;
+    background-position: center center;
+    position: relative;
+    margin: 0px auto;
+}
+
+.frame:after {
+    content: "Drop an Image";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 50%;
+    text-align: center;
+    color: hsla(210, 80%, 60%, 1);
+    z-index: 1;
+    line-height: 0;
+    padding-top: 25vh;
+    font-family: Sans-serif;
+    font-size: 24pt;
+
+}
+
+.frame.drop-active:after{
+    content: "Do It!";
+    font-size: 60pt;
+    color: hsla(317, 80%, 60%, 1);
 }
