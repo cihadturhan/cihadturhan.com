@@ -51,5 +51,24 @@
         "plugin": ["js/dist/plugin.min.js"],
         "all": ["js/dist/all.min.js"]
       }
+    },
+    "jsMobile": {
+        "dev": {
+        "plugin":[
+          "js/lib/glitch.js",
+          "js/lib/scrollspy.js",
+          "js/lib/fastclick.js"
+        ],
+        "all":[
+          "cv.js",
+          "js/hello.js",
+          "js/contact.js",
+          "js/main.mobile.js"
+        ]
+      },
+      "dist": {
+        "plugin": ["js/dist/plugin.mobile.min.js"],
+        "all": ["js/dist/all.mobile.min.js"]
+      }
     }
 }

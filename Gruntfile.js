@@ -44,7 +44,9 @@ module.exports = function(grunt) {
             dist: {
                 files: {
                     '<%= dirs.js.dist.plugin[0] %>':'<%= dirs.js.dev.plugin %>',
-                    '<%= dirs.js.dist.all[0] %>':'<%= dirs.js.dev.all %>'
+                    '<%= dirs.js.dist.all[0] %>':'<%= dirs.js.dev.all %>',
+                    '<%= dirs.jsMobile.dist.plugin[0] %>':'<%= dirs.jsMobile.dev.plugin %>',
+                    '<%= dirs.jsMobile.dist.all[0] %>':'<%= dirs.jsMobile.dev.all %>'
                 }
             }
         },

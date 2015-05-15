@@ -25,15 +25,8 @@ var intro = (function() {
       ga('send', 'pageview');
 
     /*INTRO */
-    window.scrollTo(0,0);
-
-    if(window.innerWidth < 1025)
-        window.isMobile = true;
-
-    if(!hasWebGL())
-       window.noWebgl = true;
-    
-    var keyframeCount = 30;
+     
+    var keyframeCount = 5;
     var currKeyframe = 0;
 
     var lines = document.querySelectorAll('.intro-ring');
@@ -50,6 +43,7 @@ var intro = (function() {
    
     setTimeout(function() {
         lazyProcess();
+        window.scrollTo(0,0);
     }, 800);
 })();
 
@@ -69,17 +63,11 @@ var lazyProcess = (function() {
     }
     
     var jsList = [
-    'https://cdnjs.cloudflare.com/ajax/libs/sketch.js/1.0.0/sketch.min.js',
-    'https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js',
-
     'https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js',
-    'https://cdnjs.cloudflare.com/ajax/libs/three.js/r70/three.min.js',
-
+    'https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js',
+    
     'https://cdnjs.cloudflare.com/ajax/libs/gsap/1.16.0/TweenMax.min.js',
     'https://cdnjs.cloudflare.com/ajax/libs/gsap/1.16.0/plugins/ScrollToPlugin.min.js',
-
-    'https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.8/ace.js',
-    'https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.8/theme-github.js',
 
     'https://cdnjs.cloudflare.com/ajax/libs/slabText/2.3/jquery.slabtext.min.js'
     ]
@@ -89,29 +77,7 @@ var lazyProcess = (function() {
     }
     
     var imgList = [
-        'img/love-hate.svg',
-        'img/works/disap.png', 
-        'img/works/disap-icon-blur.png',
-        'img/works/sorate.png', 
-        'img/works/sorate-icon-blur.png',
-        'img/works/eksenlive.png', 
-        'img/works/eksenlive-icon-blur.png',
-        'img/works/eksenplus.png', 
-        'img/works/eksenplus-icon-blur.png',
-        'img/works/vdf.png', 
-        'img/works/vdf-icon-blur.png',
-        'img/works/tickr.png', 
-        'img/works/tickr-icon-blur.png',
-        'img/works/more.png', 
-        'img/works/more-icon-blur.png',
-        'img/lab/gravitional-lensing.png',
-        'img/lab/h-atom.png',
-        'img/lab/charttransition.png',
-        'img/lab/cssplane.png',
-        'img/lab/jquery-aim.png',
-        'img/lab/rating-analysis.png',
-        'img/lab/yesno.png',
-        'img/lab/colorwavelengths.png',
+        'img/works/disap.png',
     ];
 
     // delay each image and append the timestamp to prevent caching

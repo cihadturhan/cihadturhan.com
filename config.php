@@ -1,6 +1,6 @@
 <?php
 define('DIR', 'dist'); //dev or dist 
-$version = '0.0.0';
+$version = '0.0.8';
 
 function load_package_config() {
     GLOBAL $version;

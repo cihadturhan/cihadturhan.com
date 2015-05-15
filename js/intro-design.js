@@ -11,12 +11,12 @@ HydrostatAnim = (function($) {
         interactive: false,
         darkTheme: true,
         headRadius: 0,
-        thickness: 20,
-        tentacles: 50,
+        thickness:  window.isMobile?10:20,
+        tentacles: window.isMobile?20:50,
         friction: 0.001,
         gravity: 0,
         colour: spectral[7],
-        length: 50,
+        length: window.isMobile?25:50,
         pulse: true,
         wind: -1,
         windDecay: 0.96,
@@ -203,8 +203,8 @@ HydrostatAnim = (function($) {
         
         container: document.getElementById('container'),
         fullscreen: false,
-        width: $('#container').width(),
-        height: $('#container').height(),
+        width: $(window).width()/2,
+        height: $(window).height(),
         setup: function() {
             
             t = this.millis;
@@ -243,8 +243,6 @@ HydrostatAnim = (function($) {
                 container.appendChild(canvas);
             }
 
-
-            //t = this.millis;
             cx = this.width;
             cy = this.height;
             phase = HALF_PI;
@@ -295,7 +293,7 @@ HydrostatAnim = (function($) {
             
             this.beginPath();
             this.arc(center.x, center.y, radius + settings.thickness, 0, TWO_PI);
-            this.fillStyle = settings.colour; //'hsl(' + h + ',' + s + '%,' + w + '%)';
+            this.fillStyle = settings.colour;
             this.fill();
         }
     });

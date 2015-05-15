@@ -83,7 +83,6 @@ div#intro {
     -webkit-perspective-origin: 50vw 50vh;
     overflow: hidden;
     position: relative;
-    /* background: hsl(350, 100%, 62%); */
     visibility: visible;
 }
 
@@ -393,12 +392,33 @@ div.particle-wrapper {
     color: #00ca94;
 }
 
-@media (max-width: 1024px){
-    #mobile-overlay{
-        display: block;
+@media screen and (max-width: 1024px) {
+    .intro-text{
+        width: 240px !important;
     }
 
-    .full-wh, header{
-         display: none;
+    #contact-svg-container{
+        width: 100% !important;
+    }
+
+    .overlay{
+        padding: 0pt!important;
+    }
+
+    .overlay>div{
+       padding-bottom: 25pt;
+    }
+
+    .intro-text>span {
+        padding-bottom: 5pt!important;
+    }
+
+    #contact h3 {
+      padding-top: 5px !important;
+      font-size: 11pt !important;
+    }
+
+    div#logo-container{
+        width: 32% !important;
     }
 }

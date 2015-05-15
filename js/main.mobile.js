@@ -1,53 +1,7 @@
- //TO-DO Make it thiefproof
-
-function adjustEditor(editor) {
-    
-    editor.setHighlightActiveLine(false);
-    editor.setShowPrintMargin(false);
-    editor.setReadOnly(true); // false to make it editable
-    editor.setTheme("ace/theme/github");
-    editor.renderer.setShowGutter(false);
-    editor.getSession().setMode("ace/mode/javascript");
-    editor.session.selection.clearSelection();
-    editor.setBehavioursEnabled(false)
-    editor.renderer.setStyle("disabled", true);
-    editor.setOption("dragEnabled", false);
-    editor.blur();
-
-}
-
-function Greetings() {
-    console.log('୧༼ ͡◉ل͜ ͡◉༽୨');
-    console.log('Hello!');
-    console.log('Are you here for the source code?');
-    console.log('Don\'t waste your time digging minified code.');
-    console.log('Just send mail to contact@cihadturhan.com. I\'ll send you finished version.');
-    console.log('Have a nice day. Cheers');
-
-    //TO-DO uncomment
-    for (var key in console) {
-        console[key] = function() {
-        };
-    }
-
-}
-
-d3.selection.prototype.animate = function(opts) {
-    !opts && (opts = {})
-    var dur = opts.duration ? opts.duration : 1500;
-    var ease = opts.ease ? opts.ease : d3.ease('exp-out');
-    var delay = opts.delay ? opts.delay : 0;
-    delete opts.duration;
-    var t = this.transition().ease(ease).duration(dur).delay(delay);
-    return t;
-};
-
 function initListeners() {
     $w = $(window);
     
     $(window).on('hello-enter', Hello);
-    $(window).on('main-enter', Intro);
-    $(window).on('about-enter', About);
     $(window).on('contact-enter', Contact);
 
 }
@@ -64,7 +18,6 @@ function scrollSpy() {
     });
     
     $('.full-wh').scrollSpy();
-    
     
     var sections = [];
     
@@ -151,7 +104,11 @@ function freeScroll() {
 
 
 Portfolio = {
+
+   
     start: function() {
+        FastClick.attach(document.body);
+        
         function welcome() {
             
             var $window = $(window); //Window object
@@ -163,7 +120,7 @@ Portfolio = {
                 var href = $(this).attr('href');
                 $window.trigger(href + '-click');
                 var y = $(href).position().top;
-                console.log(y);
+
                 TweenMax.to($window, scrollTime, {
                     scrollTo: {y: y,autoKill: true},
                     ease: Strong.easeInOut,
@@ -191,21 +148,12 @@ Portfolio = {
         
         initListeners();
         scrollSpy();
-        
-        TweenMax.to($('header'), 0, {y: -$('header').height()});
+       
         TweenMax.to($('#main .full-wh-footer'), 0, {y: $('#main .full-wh-footer').height()});
         $('header').show();
         $('#main .full-wh-footer').show();
-        
-        Greetings(window);
-        
-        window._codeIntro = CodeAnim(jQuery);
-        
-        var _skills = Skills(window, jQuery);
-        var _works = Works();
-        var _lab = Lab(jQuery, TweenMax);
 
-        window.isMobile?welcome():window._codeIntro.init(welcome);    
+        welcome(); 
     
     }
 };

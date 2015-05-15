@@ -1,3 +1,7 @@
+#warning{
+    display: none;
+}
+
 #welcome{
     position: absolute;
     left: 0;
@@ -15,7 +19,7 @@ canvas{
 }
 
 #canvas-background{
-   z-index: 0;
+   z-index: 1;
 }
 
 #canvas-foreground{
@@ -24,12 +28,13 @@ canvas{
 
 .frame {
     width: 50vw;    
-    height: 50vh;    
-    background: url("img/film-frame.png") 100% 100% no-repeat;    
+    height: 50vh;        
     background-size: contain;
     background-position: center center;
     position: relative;
     margin: 0px auto;
+    background-repeat: no-repeat;
+    /* display: none; */
 }
 
 .frame:after {
@@ -47,6 +52,9 @@ canvas{
     font-family: Sans-serif;
     font-size: 24pt;
 
+    background: url("img/film-frame.png") 100% 100% no-repeat;
+    background-position: center center;
+    background-size: contain;
 }
 
 .frame.drop-active:after{

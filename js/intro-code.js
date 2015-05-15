@@ -1,6 +1,6 @@
 CodeAnim = function() {
     var count = 0;
-    var maxCount = 6;
+    var maxCount = window.isMobile ? 2 : 6;
     var glitchParent = $('.main-pane.right-pane');
     var glitchElem = $('.main-pane.right-pane>table');
     var glitchCount = 0;
@@ -35,7 +35,7 @@ CodeAnim = function() {
                 var w = canvas.width, h = canvas.height;
                 
                 for (var i = 0; i < maxCount; i++) {
-                    glitchImgDataArray[i] = glitch.glitchImage(canvas, (maxCount - count) / maxCount * 3 + 1);
+                    glitchImgDataArray[i] = glitch.glitchImage(canvas, (maxCount - count) / maxCount * 4 + 1);
                 }
                 
                 $(canvas).addClass('glitch-canvas').hide();
@@ -59,8 +59,7 @@ CodeAnim = function() {
     
     return {
         init: function(callback) {
-            callback = callback ? callback : function() {
-            };
+            callback = callback ? callback : function() {};
             glitchIt(0, callback);
         },
         start: function() {
@@ -70,103 +69,3 @@ CodeAnim = function() {
     }
 
 }
-
-_CodeAnim = (function($) {
-    
-    var myObj = {};
-    var iterationList = [];
-    var maxIteration = 2;
-    var textDuration = 4000;
-    var noDelay = true;
-    
-    var newObj = {};
-    
-    
-    $('.js-file-line-container').find('td').each(function(i) {
-        var elem = $(this);
-        setTimeout(function() {
-            elem.css({
-                opacity: 1
-            });
-        }, i * 30)
-    });
-    
-    $('.js-file-line-container>tbody>tr>td').each(function(i) {
-        var id = $(this).attr('id');
-        myObj[id] = this.childNodes;
-    });
-    
-    console.log(+new Date)
-    
-    var firstIteration = {};
-    for (var key in myObj) {
-        
-        
-        var nodeTexts = Array.prototype.reduce.call(myObj[key], function(p, c, i) {
-            p[i] = c.textContent;
-            return p
-        }, {});
-        firstIteration[key] = [];
-        
-        for (var j in nodeTexts) {
-            firstIteration[key][j] = nodeTexts[j];
-        }
-        
-        
-        newObj[key] = {
-            entropy: Entropy.watch(nodeTexts, 3)
-        };
-    }
-    
-    iterationList.push(firstIteration);
-    
-    for (var i = 0; i < maxIteration; i++) {
-        var currIteration = {};
-        for (var key in newObj) {
-            currIteration[key] = [];
-            for (var j in newObj[key].entropy) {
-                currIteration[key][j] = newObj[key].entropy[j];
-            }
-        }
-        iterationList.push(currIteration);
-    }
-    
-    var count = maxIteration - 1;
-    changeCode(count--);
-    noDelay = false;
-    
-    var timer = setInterval(function() {
-        
-        if (count < 0) {
-            clearInterval(timer);
-            return;
-        }
-        
-        changeCode(count);
-        count--;
-    
-    }, textDuration);
-    
-    function changeLine(c, id, that) {
-        if (noDelay) {
-            for (var i = 0; i < that.childNodes.length; i++) {
-                that.childNodes[i].textContent = iterationList[c][id][i];
-            }
-        } else {
-            setTimeout(function() {
-                for (var i = 0; i < that.childNodes.length; i++) {
-                    that.childNodes[i].textContent = iterationList[c][id][i];
-                }
-            }, ~~(Math.random() * textDuration))
-        }
-    }
-    
-    function changeCode(count) {
-        $('.js-file-line-container>tbody>tr>td').each(function(index) {
-            var id = $(this).attr('id');
-            var that = this;
-            changeLine(count, id, that)
-        });
-    }
-
-});
