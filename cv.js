@@ -87,6 +87,17 @@ CV = {
         ]
     },
     labs: [{
+            name: 'Overwerk 4M (Soon)',
+            description: 'Yes 4 MILLION particles, in realtime! I\'m pushing the limits of WebGL with a audio-visual experiment. It\'s still a work-in-progress project but will be released very soon. This project is collabrated with <a href="https://soundcloud.com/overwerk" target="_blank">Overwerk</a> and I really appreciate him to let me have a chance to use his songs to visualize. ',
+            difficulty: 3.5,
+            tags: ['Web Audio API', 'WebGL', 'GLSL'],
+            backgroundLink: 'img/lab/overwerk-4m.png',
+            refs: [
+ 
+            ],
+            url: 'javascript:alert(\'Will be released in a couple of days!\')'
+        },
+		{
             name: 'Hydrogen Atom',
             description: 'A WebGL experiment which visualizes probablity distribution of Hydrogen atom calculated by its wavefunction. To summarize, the probablity of an electron to be at a point depends on the density of the dots when the core of atom is placed at origin of the grid. Zoom in and out to see seperation of probablities.',
             difficulty: 4.5,

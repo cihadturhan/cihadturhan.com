@@ -10,7 +10,7 @@
   "title": "Portfolio of Cihad Turhan",
   "homepage": "http://www.cihadturhan.com",
   "description": "Interactive portfolio of Cihad Turhan which includes WebGL, D3, CSS3 and other visual demos.",
-  "version": "0.9.4",
+  "version": "0.9.5",
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-contrib-jshint": "~0.7.2",
