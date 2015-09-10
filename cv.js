@@ -95,7 +95,7 @@ CV = {
             refs: [
  
             ],
-            url: 'javascript:alert(\'Will be released in a couple of days!\')'
+            url: '/lab/overwerk-2m/'
         },
 		{
             name: 'Hydrogen Atom',
@@ -120,7 +120,7 @@ CV = {
                 {type: 'video',url: 'http://youtu.be/FCoxYlpJq9s?t=1m13s'}, 
                 {type: 'image',url: 'http://upload.wikimedia.org/wikipedia/commons/d/d6/BlackHole_Lensing.gif'}
             ],
-            url: 'lab/gravitional-lensing/'
+            url: '/lab/gravitional-lensing/'
         }, 
         {
             name: 'Chart Transition',
@@ -131,7 +131,7 @@ CV = {
             refs: [
                
             ],
-            url: 'lab/charttransition/'
+            url: '/lab/charttransition/'
         }, 
         {
             name: '3D CSS Paper Plane',
@@ -142,7 +142,7 @@ CV = {
             refs: [
             
             ],
-            url: 'lab/cssplane/'
+            url: '/lab/cssplane/'
         }, 
         {
             name: 'Rating Analysis',
@@ -153,7 +153,7 @@ CV = {
             refs: [
                 {type: 'doc',url: 'http://sbtanaliz.com/news.php?nid=4'}
             ],
-            url: 'lab/sortedbars/'
+            url: '/lab/sortedbars/'
         }, 
         {
             name: 'Jquery Aim',
@@ -178,7 +178,7 @@ CV = {
                 {type: 'video',url: 'https://www.youtube.com/watch?v=eO1yYBm5wSo'}
             
             ],
-            url: 'lab/yesno/'
+            url: '/lab/yesno/'
         }, 
         {
             name: 'Rain-Bros SVG',
@@ -191,7 +191,7 @@ CV = {
                 {type: 'doc',url: 'https://dribbble.com/shots/1515226-Rain-Bros'}
             
             ],
-            url: 'lab/colorwavelengths/'
+            url: '/lab/colorwavelengths/'
         }
     ],
     works: [
