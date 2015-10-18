@@ -1,14 +1,5 @@
 var intro = (function() {
 
-    function hasWebGL() {
-        //return false;
-        try {
-            return !!window.WebGLRenderingContext && !!document.createElement('canvas').getContext('experimental-webgl');
-        } catch (e) {
-            return false;
-        }
-    }
-
     (function (i, s, o, g, r, a, m) {
           i['GoogleAnalyticsObject'] = r;
           i[r] = i[r] || function () {
@@ -38,7 +29,7 @@ var intro = (function() {
          
         lines[1].style.strokeDasharray = lines[0].style.strokeDasharray = (currKeyframe++/keyframeCount*totalLength)+'px, ' + totalLength+ 'px';
  
-    }, 16)
+    }, 16);
     
    
     setTimeout(function() {
@@ -81,7 +72,7 @@ var lazyProcess = (function() {
     ];
 
     // delay each image and append the timestamp to prevent caching
-    loader = new PxLoader();
+    var loader = new PxLoader();
 
     
     for (var i = 0; i < imgList.length; i++) {
@@ -127,7 +118,7 @@ var lazyProcess = (function() {
         js: jsList,
         css: cssList,
         img: imgList
-    }
+    };
 
 });
 
