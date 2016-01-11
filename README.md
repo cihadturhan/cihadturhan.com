@@ -101,7 +101,7 @@ It fetches all the files from `dirs.json` and `dirs.json` to concatenate and ugl
 
 
 #### Preloader
-It uses two different loader for preloading. [pxLoader](http://thinkpixellab.com/pxloader/) for images and [lazyload.js]() for scripts and css files.
+It uses two different loader for preloading. [pxLoader](http://thinkpixellab.com/pxloader/) for images and [lazyload.js]() for scripts and css files. I allocated empirical percentage for image, script and style files and adjust the arc of the loading circle.
 
 
 ## 2. Pages
