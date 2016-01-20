@@ -94,10 +94,9 @@ It fetches all the files from `dirs.json` and `dirs.json` to concatenate and ugl
   dirs: grunt.file.readJSON('dirs.json')
 }
 ```
-[dirs.json](dirs.json) has the list of all files, so if a new script is required it's added here.
+I always work and debug with source files so I created a different build structure. There is a separate JSON file –  [dirs.json](dirs.json) which has the list of all files for desktop and mobile version. If I use `DEV` in `config.php`, files are served one by one. Otherwise, I use `DIST` property and it prints only minified JavaScript and CSS files. All the required script and styles are added in dirs.json.
 
-
-![](ext/file-loader.png)
+![File Loader](ext/file-loader.png)
 
 
 #### Preloader
@@ -107,8 +106,24 @@ It uses two different loader for preloading. [pxLoader](http://thinkpixellab.com
 ## 2. Pages
 ### 2.1. Design Logic And Philosophy
 #### 2.1.1. Loading
+Scene starts with two horizontal lazy lines moving symmetrically. An arc starts and complete a circle which represents how much of the content is loaded. Meanwhile, a goo animation of 6 small and one big circles are added to keep visitor's attention on scene. Loading animation was inspired by one of the old experiments done by [Sharp & Nimble](http://sharpandnimble.com/experiments)
+
+![Goo Loader](ext/goo-loader.gif)
+
+After loader passes, user is welcomed with a fixed width introductory text introducing me and what I am doing.
+
 #### 2.1.2. Introduction
+
+The key idea to surprise the visitor at these scene. Left side represents design whereas right one represents code. User sees a **colorful tentacle animation** on the left and a **glitch animation** on the right section.
+
+![Goo Loader](ext/intro.png)
+
 #### 2.1.3. Skills
+
+Skills chart is what I experimented and satisfied with the result. Basically it's a radar chart, but in 3D!
+
+
+
 #### 2.1.4. Works
 #### 2.1.5. Lab
 #### 2.1.6. About
