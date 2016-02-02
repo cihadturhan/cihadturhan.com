@@ -1,4 +1,7 @@
+**It's still in progress, I couldn't have time to clean and comment to code and finish documentation.**
+
 # cihadturhan.com
+> Interactive portfolio of Cihad Turhan which includes WebGL, D3, CSS3 and other visual demos.
 Personal online portfolio which I listed skills, interests, works and experiments in interactive and fun way. Shortlisted in [Net Awards 2015](https://thenetawards.com/) - Best Online Portfolio category.
 
 ## Table of contents
@@ -23,6 +26,10 @@ Personal online portfolio which I listed skills, interests, works and experiment
     1. Lab
     1. About
     1. Contact
+
+1. License
+
+1. Contact
 
 ---
 ## 1. General Structure
@@ -137,3 +144,34 @@ Skills chart is what I experimented and satisfied with the result. Basically it'
 #### 2.2.5. Lab
 #### 2.2.6. About
 #### 2.2.7. Contact
+
+## 3. License
+
+The MIT License (MIT)
+
+Copyright (c) 2015 Cihad Turhan
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+## 4. Contact
+
+If you need any questions or have offers, please reach me from following channels
+- contact[at]cihadturhan.com
+- [@cihadturhan](https://twitter.com/cihadturhan)
+- [f/cihadturhan](https://www.facebook.com/cihad.turhan)
