@@ -116,13 +116,13 @@ After loader passes, user is welcomed with a fixed width introductory text intro
 
 The key idea to surprise the visitor at these scene. Left side represents design whereas right one represents code. User sees a **colorful tentacle animation** on the left and a **glitch animation** on the right section.
 
-![Goo Loader](ext/intro.png)
+![Intro](ext/intro.png)
 
 #### 2.1.3. Skills
 
 Skills chart is what I experimented and satisfied with the result. Basically it's a radar chart, but in 3D!
 
-
+![Goo Loader](ext/skills.png)
 
 #### 2.1.4. Works
 #### 2.1.5. Lab

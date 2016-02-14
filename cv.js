@@ -87,15 +87,26 @@ CV = {
         ]
     },
     labs: [{
-            name: 'Overwerk 4M (Soon)',
-            description: 'Yes 4 MILLION particles, in realtime! I\'m pushing the limits of WebGL with a audio-visual experiment. It\'s still a work-in-progress project but will be released very soon. This project is collabrated with <a href="https://soundcloud.com/overwerk" target="_blank">Overwerk</a> and I really appreciate him to let me have a chance to use his songs to visualize. ',
+            name: 'Overwerk 2M',
+            description: 'Yes 2 MILLION particles, in realtime! I\'m pushing the limits of WebGL with a audio-visual experiment. It\'s still a work-in-progress project but will be released very soon. This project is collabrated with <a href="https://soundcloud.com/overwerk" target="_blank">Overwerk</a> and I really appreciate him to let me have a chance to use his songs to visualize. ',
             difficulty: 3.5,
             tags: ['Web Audio API', 'WebGL', 'GLSL'],
-            backgroundLink: 'img/lab/overwerk-4m.png',
+            backgroundLink: 'img/lab/overwerk-2m.png',
             refs: [
  
             ],
             url: '/lab/overwerk-2m/'
+        },
+		{
+            name: 'Kinetic Typography in 3D',
+            description: 'Kinetic typography school project based on the scene at the End of Line Club in Tron - Legacy movie.',
+            difficulty: 4.0,
+            tags: ['After Effects', 'Kinetic Typography', 'Camera', 'Motion Graphics'],
+            backgroundLink: 'img/lab/tron-legacy.png',
+            refs: [
+                {type: 'video',url: 'https://www.youtube.com/watch?v=nMR-PgPJOyM'}
+            ],
+            url: 'https://youtu.be/_mZaioAFjEY'
         },
 		{
             name: 'Hydrogen Atom',
